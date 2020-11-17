@@ -1,5 +1,5 @@
 {
-  "name": "survey_config",
+  "name": "@possie-engine/survey_config",
   "version": "0.0.1",
   "description": "survey configuration",
   "main": "index.js",

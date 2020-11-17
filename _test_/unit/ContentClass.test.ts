@@ -38,7 +38,7 @@ import {
   ExcutionScriptItem,
   HtmlItem,
   ScriptItem,
-} from "../Class";
+} from "../../Class";
 
 /* <------------------------------------ **** Content Class Test START **** ------------------------------------ */
 describe("Content Class Test", () => {

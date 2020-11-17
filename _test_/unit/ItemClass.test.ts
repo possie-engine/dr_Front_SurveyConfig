@@ -15,7 +15,7 @@ import {
   OptionItem,
   ScriptItem,
   TextScriptItem,
-} from "../Class/Item/ItemClass";
+} from "../../Class/Item/ItemClass";
 import {
   NewItem,
   NewItemType2,

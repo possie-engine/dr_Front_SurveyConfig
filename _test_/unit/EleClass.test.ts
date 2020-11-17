@@ -4,7 +4,7 @@
  * @author Frank
  * @lastModify Frank 2020-11-12
  */
-import { Ele } from "../Class/EleClass";
+import { Ele } from "../../Class/EleClass";
 import { NewEle, NewEleType2 } from "./classInstance";
 /* <------------------------------------ **** Ele Class Test START **** ------------------------------------ */
 

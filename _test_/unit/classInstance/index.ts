@@ -1,4 +1,4 @@
-import { Ele } from "../../Class/EleClass";
+import { Ele } from "../../../Class/EleClass";
 import {
   NewContent,
   NewContentType2,

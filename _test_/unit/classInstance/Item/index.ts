@@ -9,7 +9,7 @@ import {
   BuiltinConditionScriptItem,
   BuiltinExcutionScriptItem,
   BuiltinTextScriptItem,
-} from "../../../Class/Item/ItemClass";
+} from "../../../../Class/Item/ItemClass";
 import { NewTextContent } from "../Content";
 
 const NewItem = new Item("itemId", "Item", null, null, null);

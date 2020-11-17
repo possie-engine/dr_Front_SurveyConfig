@@ -9,7 +9,7 @@ import {
   ScriptContent,
   LoopContent,
   QuotaContent,
-} from "../../../Class/Content/ContentClass";
+} from "../../../../Class/Content/ContentClass";
 
 import { NewExcutionScriptItem, NewHtmlItem, NewScriptItem } from "../Item";
 import { NewConditionList, NewOptionList, NewTextList } from "../List";

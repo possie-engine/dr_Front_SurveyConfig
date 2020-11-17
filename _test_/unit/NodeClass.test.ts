@@ -7,8 +7,8 @@ import {
   QuestionContent,
   QuotaContent,
   TextContent,
-} from "../Class/Content/ContentClass";
-import { HtmlItem } from "../Class/Item/ItemClass";
+} from "../../Class/Content/ContentClass";
+import { HtmlItem } from "../../Class/Item/ItemClass";
 import {
   Node,
   QuestionNode,
@@ -17,7 +17,7 @@ import {
   MarkNode,
   LoopNode,
   QuotaNode,
-} from "../Class/Node/NodeClass";
+} from "../../Class/Node/NodeClass";
 import {
   NewNode,
   NewNodeType2,

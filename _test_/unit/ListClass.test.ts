@@ -1,11 +1,11 @@
-import { HtmlItem, OptionItem } from "../Class/Item/ItemClass";
+import { HtmlItem, OptionItem } from "../../Class/Item/ItemClass";
 import {
   ConditionList,
   List,
   OptionList,
   QuestionnaireList,
   TextList,
-} from "../Class/List/ListClass";
+} from "../../Class/List/ListClass";
 import {
   NewList,
   NewListType2,

@@ -6,7 +6,7 @@ import {
   MarkNode,
   LoopNode,
   QuotaNode,
-} from "../../../Class/Node/NodeClass";
+} from "../../../../Class/Node/NodeClass";
 import {
   NewBlockContent,
   NewConditionContent,
