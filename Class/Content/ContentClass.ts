@@ -126,6 +126,7 @@ class TextContent extends Content {
     content: {
       type: string;
       list: TextList;
+      lan: string;
     }
   ) {
     super(id, kind, meta, editor, content);
@@ -246,7 +247,7 @@ class ScriptContent extends Content {
     },
     content: {
       type: string;
-      script: ScriptItem | null;
+      script: ScriptItem | null | string;
       arguments: Array<string>;
     }
   ) {

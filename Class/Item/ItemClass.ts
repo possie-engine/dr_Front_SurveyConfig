@@ -80,7 +80,7 @@ class OptionItem extends Item {
     },
     data: {
       code: string;
-      text: TextContent;
+      text: { default: TextContent; [key: string]: TextContent };
     }
   ) {
     super(id, kind, meta, editor, data);

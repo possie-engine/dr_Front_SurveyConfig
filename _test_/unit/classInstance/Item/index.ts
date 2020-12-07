@@ -47,7 +47,7 @@ const NewOptionItem = new OptionItem(
   "OptionItem",
   null,
   { comment: "comment", instruction: NewHtmlItem },
-  { code: "code", text: NewTextContent }
+  { code: "code", text: { default: NewTextContent } }
 );
 const NewTextScriptItem = new TextScriptItem(
   "TextScriptItemId",

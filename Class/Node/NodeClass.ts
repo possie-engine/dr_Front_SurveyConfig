@@ -81,8 +81,8 @@ class QuestionNode extends Node {
     structure: {
       code: string;
       content: QuestionContent;
-      text: TextContent | null;
-      instruction: TextContent | null;
+      text: { default: TextContent; [key: string]: TextContent };
+      instruction: { default: TextContent; [key: string]: TextContent };
       condition: {
         true: ConditionContent | boolean | null;
         false: ConditionContent | boolean | null;

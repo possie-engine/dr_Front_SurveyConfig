@@ -45,14 +45,14 @@ const NewTextContent = new TextContent(
   "TextContent",
   null,
   { comment: "comment" },
-  { type: "type", list: NewTextList }
+  { type: "type", list: NewTextList, lan: "default" }
 );
 const NewTextContentType2 = new TextContent(
   "TextContentId",
   "TextContent",
   {},
   { comment: "string" },
-  { type: "type", list: NewTextList }
+  { type: "type", list: NewTextList, lan: "cn" }
 );
 
 const NewConditionContent = new ConditionContent(

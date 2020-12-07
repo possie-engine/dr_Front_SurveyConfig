@@ -4,6 +4,7 @@
  * @author Frank
  * @lastModify Frank 2020-11-13
  */
+import { TextContent } from "../../Class/Content/ContentClass";
 import {
   BuiltinConditionScriptItem,
   BuiltinExcutionScriptItem,

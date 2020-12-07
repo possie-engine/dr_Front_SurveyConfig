@@ -49,8 +49,8 @@ const NewQuestionNode = new QuestionNode(
   { comment: "comment", instruction: NewHtmlItem },
   {
     code: "code",
-    text: NewTextContent,
-    instruction: NewTextContent,
+    text: { default: NewTextContent },
+    instruction: { default: NewTextContent },
     content: NewQuestionContent,
     condition: { true: NewConditionContent, false: false },
   }

@@ -148,10 +148,14 @@ describe("QuestionNodeode Class Test", () => {
       });
     });
     it("NewQuestionNode have text propty and content is instance of TextContet", () => {
-      expect(NewQuestionNode.structure.text).toBeInstanceOf(TextContent);
+      expect(NewQuestionNode.structure.text.default).toBeInstanceOf(
+        TextContent
+      );
     });
     it("NewQuestionNode have instruction propty and content is instance of TextContet", () => {
-      expect(NewQuestionNode.structure.instruction).toBeInstanceOf(TextContent);
+      expect(NewQuestionNode.structure.instruction.default).toBeInstanceOf(
+        TextContent
+      );
     });
   });
   describe("NewQuestionNode function test", () => {
