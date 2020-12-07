@@ -1,6 +1,6 @@
 import {
   List,
-  QuestionnaireList,
+  Questionnaire,
   TextList,
   ConditionList,
   OptionList,
@@ -34,14 +34,14 @@ const NewConditionListType3 = new ConditionList(
 const NewList = new List("ListId", "List", null, { comment: "comment" }, []);
 const NewListType2 = new List("ListId", "List", {}, { comment: "comment" }, []);
 
-const NewQuestionnaireList = new QuestionnaireList(
+const NewQuestionnaireList = new Questionnaire(
   "QuestionnaireListId",
   "QuestionnaireList",
   null,
   { comment: "comment" },
   []
 );
-const NewQuestionnaireListType2 = new QuestionnaireList(
+const NewQuestionnaireListType2 = new Questionnaire(
   "QuestionnaireListId",
   "QuestionnaireList",
   {},
@@ -90,4 +90,5 @@ export {
   NewTextListType2,
   NewOptionList,
   NewOptionListType2,
+  NewConditionListType3,
 };

@@ -183,6 +183,7 @@ const NewQuotaNodeType2 = new QuotaNode(
     condition: { true: NewConditionContent, false: false },
   }
 );
+
 export {
   NewNode,
   NewNodeType2,

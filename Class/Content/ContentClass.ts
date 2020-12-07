@@ -53,6 +53,16 @@ class Content extends Ele {
  * @param {object} Content the content of the Content
  */
 class QuestionContent extends Content {
+  public content: {
+    type: string;
+    options: Array<Array<OptionList>>;
+    optionsDisplay: Array<
+      Array<{
+        true: ConditionContent | boolean | null;
+        false: ConditionContent | boolean | null;
+      }>
+    >;
+  };
   constructor(
     id: string,
     kind: "QuestionContent",
@@ -70,6 +80,7 @@ class QuestionContent extends Content {
     }
   ) {
     super(id, kind, meta, editor, content);
+    this.content = content;
   }
   public validateContentType(): void {
     return null;
@@ -90,6 +101,10 @@ class QuestionContent extends Content {
  * @param {object} Content the content of the Content
  */
 class ConditionContent extends Content {
+  public content: {
+    type: string;
+    condition: Array<boolean | ConditionList>;
+  };
   constructor(
     id: string,
     kind: "ConditionContent",
@@ -101,6 +116,7 @@ class ConditionContent extends Content {
     }
   ) {
     super(id, kind, meta, editor, content);
+    this.content = content;
   }
   public validateContentType(): void {
     return null;
@@ -118,6 +134,12 @@ class ConditionContent extends Content {
  * @param {object} Content the content of the Content
  */
 class TextContent extends Content {
+  public editor: { comment: string };
+  public content: {
+    type: string;
+    list: TextList;
+    lan: string;
+  };
   constructor(
     id: string,
     kind: "TextContent",
@@ -130,6 +152,8 @@ class TextContent extends Content {
     }
   ) {
     super(id, kind, meta, editor, content);
+    this.editor = editor;
+    this.content = content;
   }
   public validateContentType(): void {
     return null;
@@ -147,6 +171,11 @@ class TextContent extends Content {
  * @param {object} Content the content of the Content
  */
 class BlockContent extends Content {
+  public content: {
+    type: string;
+    list: Array<Node>;
+    [key: string]: unknown;
+  };
   constructor(
     id: string,
     kind: "BlockContent" | string,
@@ -159,6 +188,7 @@ class BlockContent extends Content {
     }
   ) {
     super(id, kind, meta, editor, content);
+    this.content = content;
   }
   public validateContentType(): void {
     return null;
@@ -176,6 +206,12 @@ class BlockContent extends Content {
  * @param {object} Content the content of the Content
  */
 class MarkContent extends Content {
+  public content: {
+    type: string;
+    markers: Array<string>;
+    logics: Array<ConditionContent>;
+    [key: string]: unknown;
+  };
   constructor(
     id: string,
     kind: "MarkContent" | string,
@@ -189,6 +225,7 @@ class MarkContent extends Content {
     }
   ) {
     super(id, kind, meta, editor, content);
+    this.content = content;
   }
   public validateContentType(): void {
     return null;
@@ -209,6 +246,10 @@ class MarkContent extends Content {
  * @param {object} Content the content of the Content
  */
 class ExecutionContent extends Content {
+  public content: {
+    type: string;
+    excution: ExcutionScriptItem;
+  };
   constructor(
     id: string,
     kind: "ExecutionContent",
@@ -220,6 +261,7 @@ class ExecutionContent extends Content {
     }
   ) {
     super(id, kind, meta, editor, content);
+    this.content = content;
   }
   public validateContentType(): void {
     return null;
@@ -237,6 +279,15 @@ class ExecutionContent extends Content {
  * @param {object} Content the content of the Content
  */
 class ScriptContent extends Content {
+  public editor: {
+    comment: string;
+    instruction: HtmlItem;
+  };
+  public content: {
+    type: string;
+    script: ScriptItem | null | string;
+    arguments: Array<string>;
+  };
   constructor(
     id: string,
     kind: "ScriptContent",
@@ -252,6 +303,8 @@ class ScriptContent extends Content {
     }
   ) {
     super(id, kind, meta, editor, content);
+    this.editor = editor;
+    this.content = content;
   }
   public validateContentType(): void {
     return null;
@@ -275,6 +328,12 @@ class ScriptContent extends Content {
  * @param {object} Content the content of the Content
  */
 class LoopContent extends BlockContent {
+  public content: {
+    type: string;
+    options: OptionList;
+    logics: Array<ConditionContent>;
+    list: Array<Node>;
+  };
   constructor(
     id: string,
     kind: "LoopContent",
@@ -288,6 +347,7 @@ class LoopContent extends BlockContent {
     }
   ) {
     super(id, kind, meta, editor, content);
+    this.content = content;
   }
   public validateContentOptions(): void {
     return null;
@@ -305,6 +365,12 @@ class LoopContent extends BlockContent {
  * @param {object} Content the content of the Content
  */
 class QuotaContent extends MarkContent {
+  public content: {
+    type: string;
+    markers: Array<string>;
+    logics: Array<ConditionContent>;
+    quotas: Array<number>;
+  };
   constructor(
     id: string,
     kind: "QuotaContent",
@@ -318,6 +384,7 @@ class QuotaContent extends MarkContent {
     }
   ) {
     super(id, kind, meta, editor, content);
+    this.content = content;
   }
   public validateContentQuotas(): void {
     return null;

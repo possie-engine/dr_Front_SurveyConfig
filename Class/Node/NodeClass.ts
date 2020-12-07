@@ -27,6 +27,10 @@ import { HtmlItem } from "../Item/ItemClass";
  * @param {object} structure the node structure data is an object
  */
 class Node extends Ele {
+  public editor: {
+    comment: string;
+    instruction: HtmlItem;
+  };
   public structure: {
     code: string;
     content: unknown;
@@ -52,6 +56,7 @@ class Node extends Ele {
     }
   ) {
     super(id, kind, meta, editor);
+    this.editor = editor;
     this.structure = structure;
   }
   public validateStructure(): void {
@@ -73,6 +78,16 @@ class Node extends Ele {
  * @param {object} structure the node structure data is an object
  */
 class QuestionNode extends Node {
+  public structure: {
+    code: string;
+    content: QuestionContent;
+    text: { default: TextContent; [key: string]: TextContent };
+    instruction: { default: TextContent; [key: string]: TextContent };
+    condition: {
+      true: ConditionContent | boolean | null;
+      false: ConditionContent | boolean | null;
+    };
+  };
   constructor(
     id: string,
     kind: "QuestionNode",
@@ -90,6 +105,7 @@ class QuestionNode extends Node {
     }
   ) {
     super(id, kind, meta, editor, structure);
+    this.structure = structure;
   }
   public validateStructureText(): void {
     return null;
@@ -113,6 +129,14 @@ class QuestionNode extends Node {
  * @param {object} structure the node structure data is an object
  */
 class BlockNode extends Node {
+  public structure: {
+    code: string;
+    content: BlockContent;
+    condition: {
+      true: ConditionContent | boolean | null;
+      false: ConditionContent | boolean | null;
+    };
+  };
   constructor(
     id: string,
     kind: "BlockNode" | string,
@@ -128,6 +152,7 @@ class BlockNode extends Node {
     }
   ) {
     super(id, kind, meta, editor, structure);
+    this.structure = structure;
   }
   public validateStructureContent(): void {
     return null;
@@ -146,6 +171,14 @@ class BlockNode extends Node {
  * @param {object} structure the node structure data is an object
  */
 class ExecutionNode extends Node {
+  public structure: {
+    code: string;
+    content: ExecutionContent;
+    condition: {
+      true: ConditionContent | boolean | null;
+      false: ConditionContent | boolean | null;
+    };
+  };
   constructor(
     id: string,
     kind: "ExecutionNode",
@@ -161,6 +194,7 @@ class ExecutionNode extends Node {
     }
   ) {
     super(id, kind, meta, editor, structure);
+    this.structure = structure;
   }
   public validateStructureContent(): void {
     return null;
@@ -179,6 +213,14 @@ class ExecutionNode extends Node {
  * @param {object} structure the node structure data is an object
  */
 class MarkNode extends Node {
+  public structure: {
+    code: string;
+    content: MarkContent;
+    condition: {
+      true: ConditionContent | boolean | null;
+      false: ConditionContent | boolean | null;
+    };
+  };
   constructor(
     id: string,
     kind: "MarkNode" | string,
@@ -194,6 +236,7 @@ class MarkNode extends Node {
     }
   ) {
     super(id, kind, meta, editor, structure);
+    this.structure = structure;
   }
   public validateStructureContent(): void {
     return null;
@@ -214,6 +257,14 @@ class MarkNode extends Node {
  * @param {object} structure the node structure data is an object
  */
 class LoopNode extends BlockNode {
+  public structure: {
+    code: string;
+    content: LoopContent;
+    condition: {
+      true: ConditionContent | boolean | null;
+      false: ConditionContent | boolean | null;
+    };
+  };
   constructor(
     id: string,
     kind: "LoopNode",
@@ -229,6 +280,7 @@ class LoopNode extends BlockNode {
     }
   ) {
     super(id, kind, meta, editor, structure);
+    this.structure = structure;
   }
 }
 /**
@@ -240,6 +292,14 @@ class LoopNode extends BlockNode {
  * @param {object} structure the node structure data is an object
  */
 class QuotaNode extends MarkNode {
+  public structure: {
+    code: string;
+    content: QuotaContent;
+    condition: {
+      true: ConditionContent | boolean | null;
+      false: ConditionContent | boolean | null;
+    };
+  };
   constructor(
     id: string,
     kind: "QuotaNode",
@@ -255,6 +315,7 @@ class QuotaNode extends MarkNode {
     }
   ) {
     super(id, kind, meta, editor, structure);
+    this.structure = structure;
   }
 }
 /* <------------------------------------ **** Node Third Level Class END **** ------------------------------------ */

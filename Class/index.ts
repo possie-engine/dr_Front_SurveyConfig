@@ -12,7 +12,7 @@ import {
   BuiltinConditionScriptItem,
 } from "./Item/ItemClass";
 import {
-  QuestionnaireList,
+  Questionnaire,
   TextList,
   ConditionList,
   OptionList,
@@ -51,7 +51,7 @@ export {
   BuiltinTextScriptItem,
   BuiltinExcutionScriptItem,
   BuiltinConditionScriptItem,
-  QuestionnaireList,
+  Questionnaire,
   TextList,
   ConditionList,
   OptionList,

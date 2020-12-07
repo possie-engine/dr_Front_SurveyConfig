@@ -20,11 +20,12 @@ import { Node } from "../Node/NodeClass";
  */
 class List extends Ele {
   public list: unknown[];
+  public editor: { comment: string; [key: string]: unknown };
   constructor(
     id: string,
     kind: string | "List",
     meta: Record<string, unknown> | null,
-    editor: Record<string, unknown> | null,
+    editor: { comment: string },
     list: unknown[]
   ) {
     super(id, kind, meta, editor);
@@ -47,7 +48,9 @@ class List extends Ele {
  * @param {object} editor the editor of the list
  * @param {object} list the list type is the node type
  */
-class QuestionnaireList extends List {
+class Questionnaire extends List {
+  public editor: { comment: string };
+  public list: Array<Node>;
   constructor(
     id: string,
     kind: "QuestionnaireList",
@@ -56,6 +59,8 @@ class QuestionnaireList extends List {
     list: Array<Node>
   ) {
     super(id, kind, meta, editor, list);
+    this.editor = editor;
+    this.list = list;
   }
   public validateListNodes(): void {
     return null;
@@ -71,6 +76,8 @@ class QuestionnaireList extends List {
  * @param {object} list the list type is the node type
  */
 class TextList extends List {
+  public editor: { comment: string };
+  public list: Array<HtmlItem | ScriptContent>;
   constructor(
     id: string,
     kind: "TextList",
@@ -79,6 +86,8 @@ class TextList extends List {
     list: Array<HtmlItem | ScriptContent>
   ) {
     super(id, kind, meta, editor, list);
+    this.editor = editor;
+    this.list = list;
   }
 }
 
@@ -91,6 +100,8 @@ class TextList extends List {
  * @param {object} list the list type is the node type
  */
 class ConditionList extends List {
+  public editor: { comment: string };
+  public list: Array<ConditionContent | ScriptContent | boolean>;
   constructor(
     id: string,
     kind: "ConditionList",
@@ -99,6 +110,8 @@ class ConditionList extends List {
     list: Array<ConditionContent | ScriptContent | boolean>
   ) {
     super(id, kind, meta, editor, list);
+    this.editor = editor;
+    this.list = list;
   }
 }
 
@@ -111,6 +124,11 @@ class ConditionList extends List {
  * @param {object} list the list type is the node type
  */
 class OptionList extends List {
+  public editor: {
+    comment: string;
+    link: { dictionary: string; name: string } | null;
+  };
+  public list: Array<OptionItem>;
   constructor(
     id: string,
     kind: "OptionList",
@@ -122,8 +140,10 @@ class OptionList extends List {
     list: Array<OptionItem>
   ) {
     super(id, kind, meta, editor, list);
+    this.editor = editor;
+    this.list = list;
   }
 }
 /* <------------------------------------ **** List Second Level Class END **** ------------------------------------ */
 
-export { List, QuestionnaireList, TextList, ConditionList, OptionList };
+export { List, Questionnaire, TextList, ConditionList, OptionList };

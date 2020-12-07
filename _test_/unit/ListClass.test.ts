@@ -1,9 +1,10 @@
+import { ScriptContent } from "../../Class";
 import { HtmlItem, OptionItem } from "../../Class/Item/ItemClass";
 import {
   ConditionList,
   List,
   OptionList,
-  QuestionnaireList,
+  Questionnaire,
   TextList,
 } from "../../Class/List/ListClass";
 import {
@@ -14,6 +15,7 @@ import {
   NewQuestionnaireListType2,
   NewTextList,
   NewOptionList,
+  NewConditionListType2,
 } from "./classInstance";
 
 /* <------------------------------------ **** List Class Test START **** ------------------------------------ */
@@ -64,7 +66,7 @@ describe("List class test", () => {
 /* <------------------------------------ **** Questionnaire Class Test START **** ------------------------------------ */
 describe("QuestionnaireList class test", () => {
   it("QuestionnaireList is the instance of List", () => {
-    expect(NewQuestionnaireList).toBeInstanceOf(QuestionnaireList);
+    expect(NewQuestionnaireList).toBeInstanceOf(Questionnaire);
   });
   describe("NewQuestionnaireList Id Test", () => {
     it("NewQuestionnaireList id euqal to QuestionnaireListId", () => {
@@ -149,7 +151,7 @@ describe("TextList class test", () => {
     });
   });
   describe("NewTextList list Test", () => {
-    it("NewTextList list euqal to []", () => {
+    it("NewTextList list[0] is the instance of HtmlItem", () => {
       expect(NewTextList.list[0]).toBeInstanceOf(HtmlItem);
     });
   });

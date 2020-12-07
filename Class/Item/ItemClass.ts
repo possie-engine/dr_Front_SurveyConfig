@@ -47,6 +47,7 @@ class Item extends Ele {
  * @param {object} data the data of the Item
  */
 class ScriptItem extends Item {
+  public data: { function: string };
   constructor(
     id: string,
     kind: string | "ScriptItem",
@@ -55,6 +56,7 @@ class ScriptItem extends Item {
     data: { function: string }
   ) {
     super(id, kind, meta, editor, data);
+    this.data = data;
   }
   public validateDataFunction(): void {
     return null;
@@ -70,6 +72,14 @@ class ScriptItem extends Item {
  * @param {object} data the data of the Item
  */
 class OptionItem extends Item {
+  public editor: {
+    comment: string;
+    instruction: HtmlItem;
+  };
+  public data: {
+    code: string;
+    text: { default: TextContent; [key: string]: TextContent };
+  };
   constructor(
     id: string,
     kind: "OptionItem",
@@ -84,6 +94,8 @@ class OptionItem extends Item {
     }
   ) {
     super(id, kind, meta, editor, data);
+    this.editor = editor;
+    this.data = data;
   }
   public validateDataCode(): void {
     return null;
@@ -101,6 +113,8 @@ class OptionItem extends Item {
  * @param {object} data the data of the Item
  */
 class HtmlItem extends Item {
+  public meta: Record<string, unknown> | null;
+  public data: { html: string };
   constructor(
     id: string,
     kind: "HtmlItem",
@@ -109,6 +123,8 @@ class HtmlItem extends Item {
     data: { html: string }
   ) {
     super(id, kind, meta, editor, data);
+    this.editor = editor;
+    this.data = data;
   }
   public validateHtml(): void {
     return null;
@@ -126,6 +142,7 @@ class HtmlItem extends Item {
  * @param {object} data the data of the Item
  */
 class TextScriptItem extends ScriptItem {
+  public meta: { name: string };
   constructor(
     id: string,
     kind: "TextScriptItem" | string,
@@ -134,6 +151,7 @@ class TextScriptItem extends ScriptItem {
     data: { function: string }
   ) {
     super(id, kind, meta, editor, data);
+    this.meta = meta;
   }
 }
 
@@ -146,6 +164,7 @@ class TextScriptItem extends ScriptItem {
  * @param {object} data the data of the Item
  */
 class ExcutionScriptItem extends ScriptItem {
+  public meta: { name: string };
   constructor(
     id: string,
     kind: "ExcutionScriptItem" | string,
@@ -154,6 +173,7 @@ class ExcutionScriptItem extends ScriptItem {
     data: { function: string }
   ) {
     super(id, kind, meta, editor, data);
+    this.meta = meta;
   }
 }
 
@@ -166,6 +186,7 @@ class ExcutionScriptItem extends ScriptItem {
  * @param {object} data the data of the Item
  */
 class ConditionScriptItem extends ScriptItem {
+  public meta: { name: string };
   constructor(
     id: string,
     kind: "ExcutionScriptItem" | string,
@@ -174,6 +195,7 @@ class ConditionScriptItem extends ScriptItem {
     data: { function: string }
   ) {
     super(id, kind, meta, editor, data);
+    this.meta = meta;
   }
 }
 /* <------------------------------------ **** Item Third Level Class END **** ------------------------------------ */
