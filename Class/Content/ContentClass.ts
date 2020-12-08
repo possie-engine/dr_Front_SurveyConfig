@@ -54,12 +54,11 @@ class Content extends Ele {
  */
 class QuestionContent extends Content {
   public content: {
-    type: string;
+    type: "Single" | "Multi" | "OpenEnd";
     options: Array<Array<OptionList>>;
     optionsDisplay: Array<
       Array<{
-        true: ConditionContent | boolean | null;
-        false: ConditionContent | boolean | null;
+        [key: string]: ConditionContent | boolean | null;
       }>
     >;
   };
@@ -69,12 +68,11 @@ class QuestionContent extends Content {
     meta: Record<string, unknown> | null,
     editor: Record<string, unknown> | null,
     content: {
-      type: string;
+      type: "Single" | "Multi" | "OpenEnd";
       options: Array<Array<OptionList>>;
       optionsDisplay: Array<
         Array<{
-          true: ConditionContent | boolean | null;
-          false: ConditionContent | boolean | null;
+          [key: string]: ConditionContent | boolean | null;
         }>
       >;
     }
@@ -102,7 +100,7 @@ class QuestionContent extends Content {
  */
 class ConditionContent extends Content {
   public content: {
-    type: string;
+    type: "AND" | "OR" | "RAND" | "ROR" | "IS" | "IS NOT";
     condition: Array<boolean | ConditionList>;
   };
   constructor(
@@ -111,7 +109,7 @@ class ConditionContent extends Content {
     meta: Record<string, unknown> | null,
     editor: Record<string, unknown> | null,
     content: {
-      type: string;
+      type: "AND" | "OR" | "RAND" | "ROR" | "IS" | "IS NOT";
       condition: Array<boolean | ConditionList>;
     }
   ) {
@@ -172,7 +170,7 @@ class TextContent extends Content {
  */
 class BlockContent extends Content {
   public content: {
-    type: string;
+    type: "Block" | string;
     list: Array<Node>;
     [key: string]: unknown;
   };
@@ -182,13 +180,13 @@ class BlockContent extends Content {
     meta: Record<string, unknown> | null,
     editor: Record<string, unknown> | null,
     content: {
-      type: string;
+      type: "Block" | string;
       list: Array<Node>;
       [key: string]: unknown;
     }
   ) {
     super(id, kind, meta, editor, content);
-    this.content = content;
+    this.content = { ...content, type: "Block" };
   }
   public validateContentType(): void {
     return null;
@@ -207,7 +205,7 @@ class BlockContent extends Content {
  */
 class MarkContent extends Content {
   public content: {
-    type: string;
+    type: "Mark" | string;
     markers: Array<string>;
     logics: Array<ConditionContent>;
     [key: string]: unknown;
@@ -218,14 +216,14 @@ class MarkContent extends Content {
     meta: Record<string, unknown> | null,
     editor: Record<string, unknown> | null,
     content: {
-      type: string;
+      type: "Mark" | string;
       markers: Array<string>;
       logics: Array<ConditionContent>;
       [key: string]: unknown;
     }
   ) {
     super(id, kind, meta, editor, content);
-    this.content = content;
+    this.content = { ...content, type: "Mark" };
   }
   public validateContentType(): void {
     return null;
@@ -247,7 +245,7 @@ class MarkContent extends Content {
  */
 class ExecutionContent extends Content {
   public content: {
-    type: string;
+    type: "Execution";
     excution: ExcutionScriptItem;
   };
   constructor(
@@ -256,7 +254,7 @@ class ExecutionContent extends Content {
     meta: Record<string, unknown> | null,
     editor: Record<string, unknown> | null,
     content: {
-      type: string;
+      type: "Execution";
       excution: ExcutionScriptItem;
     }
   ) {
@@ -284,7 +282,7 @@ class ScriptContent extends Content {
     instruction: HtmlItem;
   };
   public content: {
-    type: string;
+    type: "Text" | "Condition";
     script: ScriptItem | null | string;
     arguments: Array<string>;
   };
@@ -297,7 +295,7 @@ class ScriptContent extends Content {
       instruction: HtmlItem;
     },
     content: {
-      type: string;
+      type: "Text" | "Condition";
       script: ScriptItem | null | string;
       arguments: Array<string>;
     }
@@ -329,7 +327,7 @@ class ScriptContent extends Content {
  */
 class LoopContent extends BlockContent {
   public content: {
-    type: string;
+    type: "Loop";
     options: OptionList;
     logics: Array<ConditionContent>;
     list: Array<Node>;
@@ -340,7 +338,7 @@ class LoopContent extends BlockContent {
     meta: Record<string, unknown> | null,
     editor: Record<string, unknown> | null,
     content: {
-      type: string;
+      type: "Loop";
       options: OptionList;
       logics: Array<ConditionContent>;
       list: Array<Node>;
@@ -366,7 +364,7 @@ class LoopContent extends BlockContent {
  */
 class QuotaContent extends MarkContent {
   public content: {
-    type: string;
+    type: "Quota";
     markers: Array<string>;
     logics: Array<ConditionContent>;
     quotas: Array<number>;
@@ -377,7 +375,7 @@ class QuotaContent extends MarkContent {
     meta: Record<string, unknown> | null,
     editor: Record<string, unknown> | null,
     content: {
-      type: string;
+      type: "Quota";
       markers: Array<string>;
       logics: Array<ConditionContent>;
       quotas: Array<number>;

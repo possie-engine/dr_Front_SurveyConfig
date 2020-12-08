@@ -132,7 +132,7 @@ describe("QuestionContent Class Test", () => {
   });
   describe("NewQuestionContent content test", () => {
     it("NewQuestionContent content have type propety and it is string", () => {
-      expect(NewQuestionContent.content.type).toEqual("type");
+      expect(NewQuestionContent.content.type).toEqual("Single");
     });
     it("NewQuestionContent content have options propety and it is array and it is the instance of OptionList", () => {
       expect(NewQuestionContent.content.options[0][0]).toBeInstanceOf(
@@ -205,7 +205,7 @@ describe("ConditionContent Class Test", () => {
   });
   describe("NewConditionContent content test", () => {
     it("NewConditionContent content have type propety and it is string", () => {
-      expect(NewConditionContent.content.type).toEqual("type");
+      expect(NewConditionContent.content.type).toEqual("AND");
     });
     it("NewConditionContent content have options propety and it is array and it is the instance of OptionList", () => {
       expect(NewConditionContent.content.condition[0]).toBeInstanceOf(
@@ -331,7 +331,7 @@ describe("BlockContent Class Test", () => {
   });
   describe("NewBlockContent content test", () => {
     it("NewBlockContent content have type propety and it is string", () => {
-      expect(NewBlockContent.content.type).toEqual("type");
+      expect(NewBlockContent.content.type).toEqual("Block");
     });
     it("NewBlockContent content have list propety", () => {
       expect(NewBlockContent.content.list).toEqual([]);
@@ -393,7 +393,7 @@ describe("MarkContent Class Test", () => {
   });
   describe("NewMarkContent content test", () => {
     it("NewMarkContent content have type propety and it is string", () => {
-      expect(NewMarkContent.content.type).toEqual("type");
+      expect(NewMarkContent.content.type).toEqual("Mark");
     });
     it("NewMarkContent content have markers propety", () => {
       expect(typeof NewMarkContent.content.markers[0]).toEqual("string");
@@ -461,7 +461,7 @@ describe("ExecutionContent Class Test", () => {
   });
   describe("NewExecutionContent content test", () => {
     it("NewExecutionContent content have type propety and it is string", () => {
-      expect(NewExecutionContent.content.type).toEqual("type");
+      expect(NewExecutionContent.content.type).toEqual("Execution");
     });
     it("NewExecutionContent content have markers propety", () => {
       expect(NewExecutionContent.content.excution).toBeInstanceOf(
@@ -525,7 +525,7 @@ describe("ScriptContent Class Test", () => {
   });
   describe("NewScriptContent content test", () => {
     it("NewScriptContent content have type propety and it is string", () => {
-      expect(NewScriptContent.content.type).toEqual("type");
+      expect(NewScriptContent.content.type).toEqual("Condition");
     });
     it("NewScriptContent content have markers propety", () => {
       expect(NewScriptContent.content.script).toBeInstanceOf(ScriptItem);
@@ -593,7 +593,7 @@ describe("LoopContent Class Test", () => {
   });
   describe("NewLoopContent content test", () => {
     it("NewLoopContent content have type propety and it is string", () => {
-      expect(NewLoopContent.content.type).toEqual("type");
+      expect(NewLoopContent.content.type).toEqual("Loop");
     });
     it("NewLoopContent content have options propety", () => {
       expect(NewLoopContent.content.options).toBeInstanceOf(OptionList);
@@ -667,7 +667,7 @@ describe("QuotaContent Class Test", () => {
   });
   describe("NewQuotaContent content test", () => {
     it("NewQuotaContent content have type propety and it is string", () => {
-      expect(NewQuotaContent.content.type).toEqual("type");
+      expect(NewQuotaContent.content.type).toEqual("Quota");
     });
     it("NewQuotaContent content have Markers propety", () => {
       expect(typeof NewQuotaContent.content.markers[0]).toEqual("string");

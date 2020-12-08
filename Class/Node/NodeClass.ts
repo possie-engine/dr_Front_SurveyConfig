@@ -35,8 +35,7 @@ class Node extends Ele {
     code: string;
     content: unknown;
     condition: {
-      true: ConditionContent | boolean | null;
-      false: ConditionContent | boolean | null;
+      [key: string]: ConditionContent | boolean | null;
     };
     [key: string]: unknown;
   };
@@ -49,8 +48,7 @@ class Node extends Ele {
       code: string;
       content: unknown;
       condition: {
-        true: ConditionContent | boolean | null;
-        false: ConditionContent | boolean | null;
+        [key: string]: ConditionContent | boolean | null;
       };
       [key: string]: unknown;
     }
@@ -84,8 +82,7 @@ class QuestionNode extends Node {
     text: { default: TextContent; [key: string]: TextContent };
     instruction: { default: TextContent; [key: string]: TextContent };
     condition: {
-      true: ConditionContent | boolean | null;
-      false: ConditionContent | boolean | null;
+      [key: string]: ConditionContent | boolean | null;
     };
   };
   constructor(
@@ -99,8 +96,7 @@ class QuestionNode extends Node {
       text: { default: TextContent; [key: string]: TextContent };
       instruction: { default: TextContent; [key: string]: TextContent };
       condition: {
-        true: ConditionContent | boolean | null;
-        false: ConditionContent | boolean | null;
+        [key: string]: ConditionContent | boolean | null;
       };
     }
   ) {
@@ -133,8 +129,7 @@ class BlockNode extends Node {
     code: string;
     content: BlockContent;
     condition: {
-      true: ConditionContent | boolean | null;
-      false: ConditionContent | boolean | null;
+      [key: string]: ConditionContent | boolean | null;
     };
   };
   constructor(
@@ -146,8 +141,7 @@ class BlockNode extends Node {
       code: string;
       content: BlockContent;
       condition: {
-        true: ConditionContent | boolean | null;
-        false: ConditionContent | boolean | null;
+        [key: string]: ConditionContent | boolean | null;
       };
     }
   ) {
@@ -175,8 +169,7 @@ class ExecutionNode extends Node {
     code: string;
     content: ExecutionContent;
     condition: {
-      true: ConditionContent | boolean | null;
-      false: ConditionContent | boolean | null;
+      [key: string]: ConditionContent | boolean | null;
     };
   };
   constructor(
@@ -188,8 +181,7 @@ class ExecutionNode extends Node {
       code: string;
       content: ExecutionContent;
       condition: {
-        true: ConditionContent | boolean | null;
-        false: ConditionContent | boolean | null;
+        [key: string]: ConditionContent | boolean | null;
       };
     }
   ) {
@@ -217,8 +209,7 @@ class MarkNode extends Node {
     code: string;
     content: MarkContent;
     condition: {
-      true: ConditionContent | boolean | null;
-      false: ConditionContent | boolean | null;
+      [key: string]: ConditionContent | boolean | null;
     };
   };
   constructor(
@@ -230,8 +221,7 @@ class MarkNode extends Node {
       code: string;
       content: MarkContent;
       condition: {
-        true: ConditionContent | boolean | null;
-        false: ConditionContent | boolean | null;
+        [key: string]: ConditionContent | boolean | null;
       };
     }
   ) {
@@ -261,8 +251,7 @@ class LoopNode extends BlockNode {
     code: string;
     content: LoopContent;
     condition: {
-      true: ConditionContent | boolean | null;
-      false: ConditionContent | boolean | null;
+      [key: string]: ConditionContent | boolean | null;
     };
   };
   constructor(
@@ -274,8 +263,7 @@ class LoopNode extends BlockNode {
       code: string;
       content: LoopContent;
       condition: {
-        true: ConditionContent | boolean | null;
-        false: ConditionContent | boolean | null;
+        [key: string]: ConditionContent | boolean | null;
       };
     }
   ) {
@@ -296,8 +284,7 @@ class QuotaNode extends MarkNode {
     code: string;
     content: QuotaContent;
     condition: {
-      true: ConditionContent | boolean | null;
-      false: ConditionContent | boolean | null;
+      [key: string]: ConditionContent | boolean | null;
     };
   };
   constructor(
@@ -309,8 +296,7 @@ class QuotaNode extends MarkNode {
       code: string;
       content: QuotaContent;
       condition: {
-        true: ConditionContent | boolean | null;
-        false: ConditionContent | boolean | null;
+        [key: string]: ConditionContent | boolean | null;
       };
     }
   ) {

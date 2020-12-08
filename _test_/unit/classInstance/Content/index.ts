@@ -30,14 +30,14 @@ const NewScriptContent = new ScriptContent(
   "ScriptContent",
   null,
   { comment: "comment", instruction: NewHtmlItem },
-  { type: "type", script: NewScriptItem, arguments: ["arguments"] }
+  { type: "Condition", script: NewScriptItem, arguments: ["arguments"] }
 );
 const NewScriptContentType2 = new ScriptContent(
   "ScriptContentId",
   "ScriptContent",
   {},
   { comment: "comment", instruction: NewHtmlItem },
-  { type: "type", script: null, arguments: ["arguments"] }
+  { type: "Text", script: null, arguments: ["arguments"] }
 );
 
 const NewTextContent = new TextContent(
@@ -60,14 +60,14 @@ const NewConditionContent = new ConditionContent(
   "ConditionContent",
   null,
   null,
-  { type: "type", condition: [NewConditionList] }
+  { type: "AND", condition: [NewConditionList] }
 );
 const NewConditionContentType2 = new ConditionContent(
   "ConditionContentId",
   "ConditionContent",
   {},
   {},
-  { type: "type", condition: [false] }
+  { type: "IS", condition: [false] }
 );
 
 const NewQuestionContent = new QuestionContent(
@@ -76,7 +76,7 @@ const NewQuestionContent = new QuestionContent(
   null,
   null,
   {
-    type: "type",
+    type: "Single",
     options: [[NewOptionList]],
     optionsDisplay: [[{ true: NewConditionContent, false: false }]],
   }
@@ -87,7 +87,7 @@ const NewQuestionContentType2 = new QuestionContent(
   {},
   {},
   {
-    type: "type",
+    type: "OpenEnd",
     options: [[NewOptionList]],
     optionsDisplay: [[{ true: null, false: true }]],
   }
@@ -98,7 +98,7 @@ const NewBlockContent = new BlockContent(
   "BlockContent",
   null,
   null,
-  { type: "type", list: [] }
+  { type: "some", list: [] }
 );
 const NewBlockContentType2 = new BlockContent(
   "NewBlockContentId",
@@ -128,14 +128,14 @@ const NewExecutionContent = new ExecutionContent(
   "ExecutionContent",
   null,
   null,
-  { type: "type", excution: NewExcutionScriptItem }
+  { type: "Execution", excution: NewExcutionScriptItem }
 );
 const NewExecutionContentType2 = new ExecutionContent(
   "ExecutionContentId",
   "ExecutionContent",
   {},
   {},
-  { type: "type", excution: NewExcutionScriptItem }
+  { type: "Execution", excution: NewExcutionScriptItem }
 );
 
 const NewLoopContent = new LoopContent(
@@ -144,7 +144,7 @@ const NewLoopContent = new LoopContent(
   null,
   null,
   {
-    type: "type",
+    type: "Loop",
     options: NewOptionList,
     logics: [NewConditionContent],
     list: [],
@@ -156,7 +156,7 @@ const NewLoopContentType2 = new LoopContent(
   {},
   {},
   {
-    type: "type",
+    type: "Loop",
     options: NewOptionList,
     logics: [NewConditionContent],
     list: [],
@@ -169,7 +169,7 @@ const NewQuotaContent = new QuotaContent(
   null,
   null,
   {
-    type: "type",
+    type: "Quota",
     markers: ["markers"],
     logics: [NewConditionContent],
     quotas: [1],
@@ -181,7 +181,7 @@ const NewQuotaContentType2 = new QuotaContent(
   {},
   {},
   {
-    type: "type",
+    type: "Quota",
     markers: ["markers"],
     logics: [NewConditionContent],
     quotas: [1],
