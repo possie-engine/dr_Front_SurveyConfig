@@ -1,4 +1,4 @@
-import { Ele } from "./EleClass";
+import { Ele } from "./Class/EleClass";
 import {
   Item,
   ScriptItem,
@@ -10,13 +10,13 @@ import {
   BuiltinTextScriptItem,
   BuiltinExcutionScriptItem,
   BuiltinConditionScriptItem,
-} from "./Item/ItemClass";
+} from "./Class/Item/ItemClass";
 import {
   Questionnaire,
   TextList,
   ConditionList,
   OptionList,
-} from "./List/ListClass";
+} from "./Class/List/ListClass";
 import {
   Node,
   QuestionNode,
@@ -25,7 +25,7 @@ import {
   MarkNode,
   LoopNode,
   QuotaNode,
-} from "./Node/NodeClass";
+} from "./Class/Node/NodeClass";
 import {
   Content,
   QuestionContent,
@@ -37,7 +37,7 @@ import {
   ScriptContent,
   LoopContent,
   QuotaContent,
-} from "./Content/ContentClass";
+} from "./Class/Content/ContentClass";
 
 export {
   Ele,
