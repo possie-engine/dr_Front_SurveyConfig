@@ -30,6 +30,7 @@ class List extends Ele {
   ) {
     super(id, kind, meta, editor);
     this.list = list;
+    this.editor = editor;
   }
   public validateList() {
     return null;

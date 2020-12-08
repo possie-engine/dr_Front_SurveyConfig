@@ -123,8 +123,8 @@ class HtmlItem extends Item {
     data: { html: string }
   ) {
     super(id, kind, meta, editor, data);
-    this.editor = editor;
     this.data = data;
+    this.meta = meta;
   }
   public validateHtml() {
     return null;
