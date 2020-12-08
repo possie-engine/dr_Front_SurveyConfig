@@ -30,7 +30,7 @@ class Item extends Ele {
     super(id, kind, meta, editor);
     this.data = data;
   }
-  validateData(): void {
+  validateData() {
     return null;
   }
 }
@@ -58,7 +58,7 @@ class ScriptItem extends Item {
     super(id, kind, meta, editor, data);
     this.data = data;
   }
-  public validateDataFunction(): void {
+  public validateDataFunction() {
     return null;
   }
 }
@@ -97,10 +97,10 @@ class OptionItem extends Item {
     this.editor = editor;
     this.data = data;
   }
-  public validateDataCode(): void {
+  public validateDataCode() {
     return null;
   }
-  public validateDataText(): void {
+  public validateDataText() {
     return null;
   }
 }
@@ -126,7 +126,7 @@ class HtmlItem extends Item {
     this.editor = editor;
     this.data = data;
   }
-  public validateHtml(): void {
+  public validateHtml() {
     return null;
   }
 }

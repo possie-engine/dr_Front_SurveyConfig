@@ -28,7 +28,7 @@ export class Ele {
     this.meta = meta;
     this.editor = editor;
   }
-  public validate(): void {
+  public validate() {
     return null;
   }
 }

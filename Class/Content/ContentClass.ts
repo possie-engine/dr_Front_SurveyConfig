@@ -37,7 +37,7 @@ class Content extends Ele {
     super(id, kind, meta, editor);
     this.content = content;
   }
-  public validateContent(): void {
+  public validateContent() {
     return null;
   }
 }
@@ -80,13 +80,13 @@ class QuestionContent extends Content {
     super(id, kind, meta, editor, content);
     this.content = content;
   }
-  public validateContentType(): void {
+  public validateContentType() {
     return null;
   }
-  public validateContentOptions(): void {
+  public validateContentOptions() {
     return null;
   }
-  public validateContentOptionsDisplay(): void {
+  public validateContentOptionsDisplay() {
     return null;
   }
 }
@@ -116,10 +116,10 @@ class ConditionContent extends Content {
     super(id, kind, meta, editor, content);
     this.content = content;
   }
-  public validateContentType(): void {
+  public validateContentType() {
     return null;
   }
-  public validateContentConditions(): void {
+  public validateContentConditions() {
     return null;
   }
 }
@@ -153,10 +153,10 @@ class TextContent extends Content {
     this.editor = editor;
     this.content = content;
   }
-  public validateContentType(): void {
+  public validateContentType() {
     return null;
   }
-  public validateContentList(): void {
+  public validateContentList() {
     return null;
   }
 }
@@ -188,10 +188,10 @@ class BlockContent extends Content {
     super(id, kind, meta, editor, content);
     this.content = { ...content, type: "Block" };
   }
-  public validateContentType(): void {
+  public validateContentType() {
     return null;
   }
-  public validateContentList(): void {
+  public validateContentList() {
     return null;
   }
 }
@@ -225,13 +225,13 @@ class MarkContent extends Content {
     super(id, kind, meta, editor, content);
     this.content = { ...content, type: "Mark" };
   }
-  public validateContentType(): void {
+  public validateContentType() {
     return null;
   }
-  public validateContentMarkers(): void {
+  public validateContentMarkers() {
     return null;
   }
-  public validateContentLogics(): void {
+  public validateContentLogics() {
     return null;
   }
 }
@@ -261,10 +261,10 @@ class ExecutionContent extends Content {
     super(id, kind, meta, editor, content);
     this.content = content;
   }
-  public validateContentType(): void {
+  public validateContentType() {
     return null;
   }
-  public validateContentExcution(): void {
+  public validateContentExcution() {
     return null;
   }
 }
@@ -304,13 +304,13 @@ class ScriptContent extends Content {
     this.editor = editor;
     this.content = content;
   }
-  public validateContentType(): void {
+  public validateContentType() {
     return null;
   }
-  public validateContentScript(): void {
+  public validateContentScript() {
     return null;
   }
-  public validateContentArguments(): void {
+  public validateContentArguments() {
     return null;
   }
 }
@@ -347,10 +347,10 @@ class LoopContent extends BlockContent {
     super(id, kind, meta, editor, content);
     this.content = content;
   }
-  public validateContentOptions(): void {
+  public validateContentOptions() {
     return null;
   }
-  public validateContentLogics(): void {
+  public validateContentLogics() {
     return null;
   }
 }
@@ -384,7 +384,7 @@ class QuotaContent extends MarkContent {
     super(id, kind, meta, editor, content);
     this.content = content;
   }
-  public validateContentQuotas(): void {
+  public validateContentQuotas() {
     return null;
   }
 }

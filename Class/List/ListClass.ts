@@ -31,7 +31,7 @@ class List extends Ele {
     super(id, kind, meta, editor);
     this.list = list;
   }
-  public validateList(): void {
+  public validateList() {
     return null;
   }
 }
@@ -62,7 +62,7 @@ class Questionnaire extends List {
     this.editor = editor;
     this.list = list;
   }
-  public validateListNodes(): void {
+  public validateListNodes() {
     return null;
   }
 }

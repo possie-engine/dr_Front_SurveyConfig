@@ -57,10 +57,10 @@ class Node extends Ele {
     this.editor = editor;
     this.structure = structure;
   }
-  public validateStructure(): void {
+  public validateStructure() {
     return null;
   }
-  public validateStructureCode(): void {
+  public validateStructureCode() {
     return null;
   }
 }
@@ -103,16 +103,16 @@ class QuestionNode extends Node {
     super(id, kind, meta, editor, structure);
     this.structure = structure;
   }
-  public validateStructureText(): void {
+  public validateStructureText() {
     return null;
   }
-  public validateStructureInstruction(): void {
+  public validateStructureInstruction() {
     return null;
   }
-  public validateStructureContent(): void {
+  public validateStructureContent() {
     return null;
   }
-  public validateStructureCondition(): void {
+  public validateStructureCondition() {
     return null;
   }
 }
@@ -148,10 +148,10 @@ class BlockNode extends Node {
     super(id, kind, meta, editor, structure);
     this.structure = structure;
   }
-  public validateStructureContent(): void {
+  public validateStructureContent() {
     return null;
   }
-  public validateStructureCondition(): void {
+  public validateStructureCondition() {
     return null;
   }
 }
@@ -188,10 +188,10 @@ class ExecutionNode extends Node {
     super(id, kind, meta, editor, structure);
     this.structure = structure;
   }
-  public validateStructureContent(): void {
+  public validateStructureContent() {
     return null;
   }
-  public validateStructureCondition(): void {
+  public validateStructureCondition() {
     return null;
   }
 }
@@ -228,10 +228,10 @@ class MarkNode extends Node {
     super(id, kind, meta, editor, structure);
     this.structure = structure;
   }
-  public validateStructureContent(): void {
+  public validateStructureContent() {
     return null;
   }
-  public validateStructureCondition(): void {
+  public validateStructureCondition() {
     return null;
   }
 }
