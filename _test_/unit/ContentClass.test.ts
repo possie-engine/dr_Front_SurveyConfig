@@ -118,8 +118,31 @@ describe("QuestionContent Class Test", () => {
     it("NewQuestionContent meta is null", () => {
       expect(NewQuestionContent.meta).toBeNull();
     });
-    it("NewQuestionContent meta is {}", () => {
-      expect(NewQuestionContentType2.meta).toEqual({});
+    it("NewQuestionContent meta is object", () => {
+      expect(typeof NewQuestionContentType2.meta).toEqual("object");
+    });
+    it("NewQuestionContent meta.randomized is object", () => {
+      expect(typeof NewQuestionContentType2.meta.randomized).toEqual("object");
+    });
+    it("NewQuestionContent meta.randomized.active is boolean", () => {
+      expect(typeof NewQuestionContentType2.meta.randomized.active).toEqual(
+        "boolean"
+      );
+    });
+    it("NewQuestionContent meta.randomized.order is object", () => {
+      expect(typeof NewQuestionContentType2.meta.randomized.order).toEqual(
+        "object"
+      );
+    });
+    it("NewQuestionContent meta.randomized.order is object", () => {
+      expect(typeof NewQuestionContentType2.meta.randomized.order).toEqual(
+        "object"
+      );
+    });
+    it("NewQuestionContent meta.randomized.order.auto is boolean", () => {
+      expect(typeof NewQuestionContentType2.meta.randomized.order.auto).toEqual(
+        "boolean"
+      );
     });
   });
   describe("NewQuestionContent editor test", () => {

@@ -11,7 +11,12 @@ import {
   QuotaContent,
 } from "../../../../Class/Content/ContentClass";
 
-import { NewExcutionScriptItem, NewHtmlItem, NewScriptItem } from "../Item";
+import {
+  NewExcutionScriptItem,
+  NewHtmlItem,
+  NewOptionItem,
+  NewScriptItem,
+} from "../Item";
 import { NewConditionList, NewOptionList, NewTextList } from "../List";
 
 const NewContent = new Content("NewContentId", "Content", null, null, {
@@ -84,7 +89,20 @@ const NewQuestionContent = new QuestionContent(
 const NewQuestionContentType2 = new QuestionContent(
   "QuestionContentId",
   "QuestionContent",
-  {},
+  {
+    randomized: {
+      active: false,
+      order: { auto: true, string: "123" },
+    },
+    grouped: {
+      active: true,
+      titles: [NewOptionItem],
+      order: { auto: false, string: "123" },
+    },
+    extraData: {
+      oe: {},
+    },
+  },
   {},
   {
     type: "OpenEnd",

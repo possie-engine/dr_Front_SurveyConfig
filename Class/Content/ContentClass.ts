@@ -6,7 +6,12 @@
  */
 
 import { Ele } from "../EleClass";
-import { ExcutionScriptItem, HtmlItem, ScriptItem } from "../Item/ItemClass";
+import {
+  ExcutionScriptItem,
+  HtmlItem,
+  OptionItem,
+  ScriptItem,
+} from "../Item/ItemClass";
 import { ConditionList, OptionList, TextList } from "../List/ListClass";
 import { Node } from "../Node/NodeClass";
 
@@ -52,6 +57,22 @@ class Content extends Ele {
  * @param {object | null} editor the editor of the Content
  * @param {object} Content the content of the Content
  */
+
+interface OrderDefault {
+  auto: boolean;
+}
+interface OrderScript {
+  auto: boolean;
+  script: string;
+}
+interface OrderString {
+  auto: boolean;
+  string: string;
+}
+interface OrderArray {
+  auto: boolean;
+  Array: Array<string>;
+}
 class QuestionContent extends Content {
   public content: {
     type: "Single" | "Multi" | "OpenEnd";
@@ -62,10 +83,38 @@ class QuestionContent extends Content {
       }>
     >;
   };
+  public meta: {
+    randomized: {
+      active: boolean;
+      order: OrderDefault | OrderScript | OrderString | OrderArray;
+    };
+    grouped: {
+      active: boolean;
+      titles: Array<OptionItem>;
+      order: OrderDefault | OrderScript | OrderString | OrderArray;
+    };
+    extraData: {
+      oe: Record<string, unknown>;
+    };
+  };
+
   constructor(
     id: string,
     kind: "QuestionContent",
-    meta: Record<string, unknown> | null,
+    meta: {
+      randomized: {
+        active: boolean;
+        order: OrderDefault | OrderScript | OrderString | OrderArray;
+      };
+      grouped: {
+        active: boolean;
+        titles: Array<OptionItem>;
+        order: OrderDefault | OrderScript | OrderString | OrderArray;
+      };
+      extraData: {
+        oe: Record<string, unknown>;
+      };
+    },
     editor: Record<string, unknown> | null,
     content: {
       type: "Single" | "Multi" | "OpenEnd";
@@ -79,6 +128,7 @@ class QuestionContent extends Content {
   ) {
     super(id, kind, meta, editor, content);
     this.content = content;
+    this.meta = meta;
   }
   public validateContentType() {
     return null;
