@@ -90,15 +90,22 @@ const NewQuestionContentType2 = new QuestionContent(
   "QuestionContentId",
   "QuestionContent",
   {
-    randomized: {
-      active: false,
-      order: { auto: true, string: "123" },
-    },
-    grouped: {
-      active: true,
-      titles: [NewOptionItem],
-      order: { auto: false, string: "123" },
-    },
+    randomized: [
+      {
+        active: false,
+        fixedPositionFor: ["123"],
+        order: { auto: true, string: "123" },
+      },
+    ],
+    grouped: [
+      {
+        active: true,
+        fixedPositionFor: ["123"],
+        titles: [NewOptionItem],
+        order: { auto: false, string: "123" },
+        members: [["123"]],
+      },
+    ],
     extraData: {
       oe: {},
     },

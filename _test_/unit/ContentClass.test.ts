@@ -125,24 +125,24 @@ describe("QuestionContent Class Test", () => {
       expect(typeof NewQuestionContentType2.meta.randomized).toEqual("object");
     });
     it("NewQuestionContent meta.randomized.active is boolean", () => {
-      expect(typeof NewQuestionContentType2.meta.randomized.active).toEqual(
+      expect(typeof NewQuestionContentType2.meta.randomized[0].active).toEqual(
         "boolean"
       );
     });
     it("NewQuestionContent meta.randomized.order is object", () => {
-      expect(typeof NewQuestionContentType2.meta.randomized.order).toEqual(
+      expect(typeof NewQuestionContentType2.meta.randomized[0].order).toEqual(
         "object"
       );
     });
     it("NewQuestionContent meta.randomized.order is object", () => {
-      expect(typeof NewQuestionContentType2.meta.randomized.order).toEqual(
+      expect(typeof NewQuestionContentType2.meta.randomized[0].order).toEqual(
         "object"
       );
     });
     it("NewQuestionContent meta.randomized.order.auto is boolean", () => {
-      expect(typeof NewQuestionContentType2.meta.randomized.order.auto).toEqual(
-        "boolean"
-      );
+      expect(
+        typeof NewQuestionContentType2.meta.randomized[0].order.auto
+      ).toEqual("boolean");
     });
   });
   describe("NewQuestionContent editor test", () => {

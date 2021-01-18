@@ -84,15 +84,18 @@ class QuestionContent extends Content {
     >;
   };
   public meta: {
-    randomized: {
+    randomized: Array<{
       active: boolean;
+      fixedPositionFor: Array<string>;
       order: OrderDefault | OrderScript | OrderString | OrderArray;
-    };
-    grouped: {
+    }>;
+    grouped: Array<{
       active: boolean;
       titles: Array<OptionItem>;
+      fixedPositionFor: Array<string>;
       order: OrderDefault | OrderScript | OrderString | OrderArray;
-    };
+      members: Array<Array<string>>;
+    }>;
     extraData: {
       oe: Record<string, unknown>;
     };
@@ -102,15 +105,18 @@ class QuestionContent extends Content {
     id: string,
     kind: "QuestionContent",
     meta: {
-      randomized: {
+      randomized: Array<{
         active: boolean;
+        fixedPositionFor: Array<string>;
         order: OrderDefault | OrderScript | OrderString | OrderArray;
-      };
-      grouped: {
+      }>;
+      grouped: Array<{
         active: boolean;
         titles: Array<OptionItem>;
+        fixedPositionFor: Array<string>;
         order: OrderDefault | OrderScript | OrderString | OrderArray;
-      };
+        members: Array<Array<string>>;
+      }>;
       extraData: {
         oe: Record<string, unknown>;
       };
