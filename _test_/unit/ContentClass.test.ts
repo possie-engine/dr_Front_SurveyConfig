@@ -134,12 +134,12 @@ describe("QuestionContent Class Test", () => {
         "object"
       );
     });
-    it("NewQuestionContent meta.randomized.order is object", () => {
-      expect(typeof NewQuestionContentType2.meta.randomized[0].order).toEqual(
-        "object"
-      );
-    });
     it("NewQuestionContent meta.randomized.order.auto is boolean", () => {
+      expect(
+        typeof NewQuestionContentType2.meta.randomized[0].order.auto
+      ).toEqual("boolean");
+    });
+    it("NewQuestionContent meta.randomized.order.auto is true", () => {
       expect(
         typeof NewQuestionContentType2.meta.randomized[0].order.auto
       ).toEqual("boolean");

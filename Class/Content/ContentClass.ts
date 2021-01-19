@@ -60,18 +60,22 @@ class Content extends Ele {
 
 interface OrderDefault {
   auto: boolean;
+  [key: string]: unknown;
 }
 interface OrderScript {
   auto: boolean;
   script: string;
+  [key: string]: unknown;
 }
 interface OrderString {
   auto: boolean;
   string: string;
+  [key: string]: unknown;
 }
 interface OrderArray {
   auto: boolean;
-  Array: Array<string>;
+  array: Array<string>;
+  [key: string]: unknown;
 }
 class QuestionContent extends Content {
   public content: {
@@ -94,7 +98,7 @@ class QuestionContent extends Content {
       titles: Array<OptionItem>;
       fixedPositionFor: Array<string>;
       order: OrderDefault | OrderScript | OrderString | OrderArray;
-      members: Array<Array<string>>;
+      members: Array<{ codes: Array<string>; groupColor: string }>;
     }>;
     extraData: {
       oe: Record<string, unknown>;
@@ -115,7 +119,7 @@ class QuestionContent extends Content {
         titles: Array<OptionItem>;
         fixedPositionFor: Array<string>;
         order: OrderDefault | OrderScript | OrderString | OrderArray;
-        members: Array<Array<string>>;
+        members: Array<{ codes: Array<string>; groupColor: string }>;
       }>;
       extraData: {
         oe: Record<string, unknown>;

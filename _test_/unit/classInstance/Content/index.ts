@@ -86,7 +86,7 @@ const NewQuestionContent = new QuestionContent(
     optionsDisplay: [[{ true: NewConditionContent, false: false }]],
   }
 );
-const NewQuestionContentType2 = new QuestionContent(
+const NewQuestionContentType2: QuestionContent = new QuestionContent(
   "QuestionContentId",
   "QuestionContent",
   {
@@ -103,7 +103,7 @@ const NewQuestionContentType2 = new QuestionContent(
         fixedPositionFor: ["123"],
         titles: [NewOptionItem],
         order: { auto: false, string: "123" },
-        members: [["123"]],
+        members: [{ groupColor: "red", codes: ["1", "2", "3"] }],
       },
     ],
     extraData: {
@@ -117,6 +117,8 @@ const NewQuestionContentType2 = new QuestionContent(
     optionsDisplay: [[{ true: null, false: true }]],
   }
 );
+
+NewQuestionContentType2.meta.randomized[0].order.array;
 
 const NewBlockContent = new BlockContent(
   "NewBlockContentId",
