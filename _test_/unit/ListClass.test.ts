@@ -16,6 +16,7 @@ import {
   NewTextList,
   NewOptionList,
   NewConditionListType2,
+  NewOptionListType2,
 } from "./classInstance";
 
 /* <------------------------------------ **** List Class Test START **** ------------------------------------ */
@@ -244,16 +245,16 @@ describe("OptionList class test", () => {
     it("NewOptionList meta type is object", () => {
       expect(typeof NewOptionList.meta).toEqual("object");
     });
+    it("NewOptionList meta.link is object", () => {
+      expect(typeof NewOptionListType2.meta.link).toEqual("object");
+    });
+    it("NewOptionList meta.link.string is object", () => {
+      expect(typeof NewOptionListType2.meta.link.key).toEqual("string");
+    });
   });
   describe("NewOptionList editor Test", () => {
     it("NewOptionList editor.comment euqal to null", () => {
       expect(NewOptionList.editor.comment).toEqual("comment");
-    });
-    it("NewOptionList editor.link euqal to null", () => {
-      expect(NewOptionList.editor.link).toEqual({
-        dictionary: "dictionary",
-        name: "name",
-      });
     });
   });
   describe("NewOptionList list Test", () => {

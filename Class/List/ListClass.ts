@@ -7,7 +7,7 @@
 
 import { ConditionContent, ScriptContent } from "../Content/ContentClass";
 import { Ele } from "../EleClass";
-import { HtmlItem, OptionItem } from "../Item/ItemClass";
+import { HtmlItem, OptionItem, ScriptItem } from "../Item/ItemClass";
 import { Node } from "../Node/NodeClass";
 
 /* <------------------------------------ **** List Top Level Class START **** ------------------------------------ */
@@ -52,16 +52,36 @@ class List extends Ele {
 class Questionnaire extends List {
   public editor: { comment: string };
   public list: Array<Node>;
+  public meta: {
+    lan: Array<string>;
+    defaultLan: string;
+    scripts: {
+      [key: string]: ScriptItem;
+    };
+    optionLists: {
+      [key: string]: OptionList;
+    };
+  };
   constructor(
     id: string,
     kind: "QuestionnaireList",
-    meta: Record<string, unknown> | null,
+    meta: {
+      lan: Array<string>;
+      defaultLan: string;
+      scripts: {
+        [key: string]: ScriptItem;
+      };
+      optionLists: {
+        [key: string]: OptionList;
+      };
+    },
     editor: { comment: string },
     list: Array<Node>
   ) {
     super(id, kind, meta, editor, list);
     this.editor = editor;
     this.list = list;
+    this.meta = meta;
   }
   public validateListNodes() {
     return null;
@@ -127,22 +147,30 @@ class ConditionList extends List {
 class OptionList extends List {
   public editor: {
     comment: string;
-    link: { dictionary: string; name: string } | null;
   };
   public list: Array<OptionItem>;
+  public meta: {
+    link: {
+      key: string;
+    };
+  };
   constructor(
     id: string,
     kind: "OptionList",
-    meta: Record<string, unknown> | null,
+    meta: {
+      link: {
+        key: string;
+      };
+    },
     editor: {
       comment: string;
-      link: { dictionary: string; name: string } | null;
     },
     list: Array<OptionItem>
   ) {
     super(id, kind, meta, editor, list);
     this.editor = editor;
     this.list = list;
+    this.meta = meta;
   }
 }
 /* <------------------------------------ **** List Second Level Class END **** ------------------------------------ */

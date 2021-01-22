@@ -7,7 +7,7 @@ import {
 } from "../../../../Class/List/ListClass";
 
 import { NewConditionContent, NewScriptContent } from "../Content";
-import { NewHtmlItem, NewOptionItem } from "../Item";
+import { NewHtmlItem, NewOptionItem, NewScriptItem } from "../Item";
 
 const NewConditionList = new ConditionList(
   "ConditionListId",
@@ -34,6 +34,25 @@ const NewConditionListType3 = new ConditionList(
 const NewList = new List("ListId", "List", null, { comment: "comment" }, []);
 const NewListType2 = new List("ListId", "List", {}, { comment: "comment" }, []);
 
+const NewOptionList = new OptionList(
+  "OptionListId",
+  "OptionList",
+  null,
+  { comment: "comment" },
+  [NewOptionItem]
+);
+const NewOptionListType2 = new OptionList(
+  "OptionListId",
+  "OptionList",
+  {
+    link: {
+      key: "string",
+    },
+  },
+  { comment: "comment" },
+  [NewOptionItem]
+);
+
 const NewQuestionnaireList = new Questionnaire(
   "QuestionnaireListId",
   "QuestionnaireList",
@@ -44,7 +63,14 @@ const NewQuestionnaireList = new Questionnaire(
 const NewQuestionnaireListType2 = new Questionnaire(
   "QuestionnaireListId",
   "QuestionnaireList",
-  {},
+  {
+    lan: ["English"],
+    defaultLan: "English",
+    scripts: { first: NewScriptItem },
+    optionLists: {
+      list: NewOptionList,
+    },
+  },
   { comment: "comment" },
   []
 );
@@ -62,21 +88,6 @@ const NewTextListType2 = new TextList(
   {},
   { comment: "comment" },
   [NewScriptContent]
-);
-
-const NewOptionList = new OptionList(
-  "OptionListId",
-  "OptionList",
-  null,
-  { comment: "comment", link: { dictionary: "dictionary", name: "name" } },
-  [NewOptionItem]
-);
-const NewOptionListType2 = new OptionList(
-  "OptionListId",
-  "OptionList",
-  {},
-  { comment: "comment", link: { dictionary: "dictionary", name: "name" } },
-  [NewOptionItem]
 );
 
 export {
