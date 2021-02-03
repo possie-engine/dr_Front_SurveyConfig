@@ -58,83 +58,62 @@ class Content extends Ele {
  * @param {object} Content the content of the Content
  */
 
-interface OrderDefault {
-  auto: boolean;
-  [key: string]: unknown;
-}
-interface OrderScript {
-  auto: boolean;
-  script: string;
-  [key: string]: unknown;
-}
-interface OrderString {
-  auto: boolean;
-  string: string;
-  [key: string]: unknown;
-}
-interface OrderArray {
-  auto: boolean;
-  array: Array<string>;
-  [key: string]: unknown;
-}
-class QuestionContent extends Content {
-  public content: {
-    type: "Single" | "Multi" | "OpenEnd";
-    options: Array<Array<OptionList>>;
-    optionsDisplay: Array<
-      Array<{
-        [key: string]: ConditionContent | boolean | null;
-      }>
-    >;
-  };
-  public meta: {
-    randomized: Array<{
-      active: boolean;
-      fixedPositionFor: Array<string>;
-      order: OrderDefault | OrderScript | OrderString | OrderArray;
-    }>;
-    grouped: Array<{
-      active: boolean;
-      titles: Array<OptionItem>;
-      fixedPositionFor: Array<string>;
-      order: OrderDefault | OrderScript | OrderString | OrderArray;
-      members: Array<{ codes: Array<string>; groupColor: string }>;
-    }>;
-    extraData: {
-      oe: Record<string, unknown>;
+type QuestionContentContentType = {
+  type: "Single" | "Multi" | "OpenEnd";
+  options: Array<Array<OptionList>>;
+  optionsDisplay: Array<
+    Array<{
+      [key: string]: ConditionContent | boolean | null;
+    }>
+  >;
+};
+type QuestionContentMetaType = {
+  randomized: Array<{
+    active: boolean;
+    type: "auto" | "script";
+    fixedPositionFor: Array<string>;
+    order: {
+      recordedFormat: string;
+      script: string;
     };
+  }>;
+  grouped: Array<{
+    active: boolean;
+    members: Array<{
+      id: string;
+      code: string;
+      options: Array<string>;
+      title: {
+        text: string;
+        script: null | string;
+      };
+      groupColor: string;
+      fixedPosition: boolean;
+    }>;
+    randomized: {
+      active: boolean;
+      type: string;
+      fixedPositionFor: Array<string>;
+      order: {
+        recordedFormat: string;
+        script: string;
+      };
+    };
+  }>;
+  extraData: {
+    oe: Record<string, unknown>;
   };
+};
+class QuestionContent extends Content {
+  public content: QuestionContentContentType;
+  public meta: QuestionContentMetaType;
 
   constructor(
     id: string,
     kind: "QuestionContent",
-    meta: {
-      randomized: Array<{
-        active: boolean;
-        fixedPositionFor: Array<string>;
-        order: OrderDefault | OrderScript | OrderString | OrderArray;
-      }>;
-      grouped: Array<{
-        active: boolean;
-        titles: Array<OptionItem>;
-        fixedPositionFor: Array<string>;
-        order: OrderDefault | OrderScript | OrderString | OrderArray;
-        members: Array<{ codes: Array<string>; groupColor: string }>;
-      }>;
-      extraData: {
-        oe: Record<string, unknown>;
-      };
-    },
+    meta: QuestionContentMetaType,
     editor: Record<string, unknown> | null,
-    content: {
-      type: "Single" | "Multi" | "OpenEnd";
-      options: Array<Array<OptionList>>;
-      optionsDisplay: Array<
-        Array<{
-          [key: string]: ConditionContent | boolean | null;
-        }>
-      >;
-    }
+    content: QuestionContentContentType
   ) {
     super(id, kind, meta, editor, content);
     this.content = content;

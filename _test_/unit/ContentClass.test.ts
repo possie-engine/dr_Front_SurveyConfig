@@ -134,15 +134,105 @@ describe("QuestionContent Class Test", () => {
         "object"
       );
     });
-    it("NewQuestionContent meta.randomized.order.auto is boolean", () => {
+    it("NewQuestionContent meta.randomized.order.recordedFormat is string", () => {
       expect(
-        typeof NewQuestionContentType2.meta.randomized[0].order.auto
+        typeof NewQuestionContentType2.meta.randomized[0].order.recordedFormat
+      ).toEqual("string");
+    });
+    it("NewQuestionContent meta.randomized.order.script is true", () => {
+      expect(
+        typeof NewQuestionContentType2.meta.randomized[0].order.script
+      ).toEqual("string");
+    });
+    it("NewQuestionContent meta.grouped[0] is object", () => {
+      expect(typeof NewQuestionContentType2.meta.grouped[0]).toEqual("object");
+    });
+    it("NewQuestionContent meta.grouped[0].active is boolean", () => {
+      expect(typeof NewQuestionContentType2.meta.grouped[0].active).toEqual(
+        "boolean"
+      );
+    });
+    it("NewQuestionContent meta.grouped[0].members[0] is object", () => {
+      expect(typeof NewQuestionContentType2.meta.grouped[0].members[0]).toEqual(
+        "object"
+      );
+    });
+    it("NewQuestionContent meta.grouped[0].members[0].id is string", () => {
+      expect(
+        typeof NewQuestionContentType2.meta.grouped[0].members[0].id
+      ).toEqual("string");
+    });
+    it("NewQuestionContent meta.grouped[0].members[0].code is string", () => {
+      expect(
+        typeof NewQuestionContentType2.meta.grouped[0].members[0].code
+      ).toEqual("string");
+    });
+    it("NewQuestionContent meta.grouped[0].members[0].options[0] is string", () => {
+      expect(
+        typeof NewQuestionContentType2.meta.grouped[0].members[0].options[0]
+      ).toEqual("string");
+    });
+    it("NewQuestionContent meta.grouped[0].members[0].title is object", () => {
+      expect(
+        typeof NewQuestionContentType2.meta.grouped[0].members[0].title
+      ).toEqual("object");
+    });
+    it("NewQuestionContent meta.grouped[0].members[0].title.script is string", () => {
+      expect(
+        typeof NewQuestionContentType2.meta.grouped[0].members[0].title.script
+      ).toEqual("string");
+    });
+    it("NewQuestionContent meta.grouped[0].members[0].title.text is string", () => {
+      expect(
+        typeof NewQuestionContentType2.meta.grouped[0].members[0].title.text
+      ).toEqual("string");
+    });
+    it("NewQuestionContent meta.grouped[0].members[0].groupColor is string", () => {
+      expect(
+        typeof NewQuestionContentType2.meta.grouped[0].members[0].groupColor
+      ).toEqual("string");
+    });
+    it("NewQuestionContent meta.grouped[0].members[0].fixedPosition is boolean", () => {
+      expect(
+        typeof NewQuestionContentType2.meta.grouped[0].members[0].fixedPosition
       ).toEqual("boolean");
     });
-    it("NewQuestionContent meta.randomized.order.auto is true", () => {
+    it("NewQuestionContent meta.grouped[0].randomized is object", () => {
+      expect(typeof NewQuestionContentType2.meta.grouped[0].randomized).toEqual(
+        "object"
+      );
+    });
+    it("NewQuestionContent meta.grouped[0].randomized.active is boolean", () => {
       expect(
-        typeof NewQuestionContentType2.meta.randomized[0].order.auto
+        typeof NewQuestionContentType2.meta.grouped[0].randomized.active
       ).toEqual("boolean");
+    });
+    it("NewQuestionContent meta.grouped[0].randomized.type is string", () => {
+      expect(
+        typeof NewQuestionContentType2.meta.grouped[0].randomized.type
+      ).toEqual("string");
+    });
+    it("NewQuestionContent meta.grouped[0].randomized.fixedPositionFor[0] is string", () => {
+      expect(
+        typeof NewQuestionContentType2.meta.grouped[0].randomized
+          .fixedPositionFor[0]
+      ).toEqual("string");
+    });
+    it("NewQuestionContent meta.grouped[0].randomized.order is object", () => {
+      expect(
+        typeof NewQuestionContentType2.meta.grouped[0].randomized.order
+      ).toEqual("object");
+    });
+    it("NewQuestionContent meta.grouped[0].randomized.order.script is string", () => {
+      expect(
+        typeof NewQuestionContentType2.meta.grouped[0].randomized.order.script
+      ).toEqual("string");
+    });
+    it("NewQuestionContent meta.grouped[0].randomized.order.recordedFormat is string", () => {
+      expect(
+        typeof NewQuestionContentType2.meta.grouped[0].randomized.order
+          .recordedFormat
+      ).toEqual("string");
     });
   });
   describe("NewQuestionContent editor test", () => {

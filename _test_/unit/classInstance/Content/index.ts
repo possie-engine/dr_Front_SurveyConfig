@@ -93,17 +93,33 @@ const NewQuestionContentType2: QuestionContent = new QuestionContent(
     randomized: [
       {
         active: false,
+        type: "auto",
         fixedPositionFor: ["123"],
-        order: { auto: true, string: "123" },
+        order: { recordedFormat: "recorded formate", script: "123" },
       },
     ],
     grouped: [
       {
         active: true,
-        fixedPositionFor: ["123"],
-        titles: [NewOptionItem],
-        order: { auto: false, string: "123" },
-        members: [{ groupColor: "red", codes: ["1", "2", "3"] }],
+        members: [
+          {
+            id: "id",
+            code: "code",
+            options: ["1", "2"],
+            title: { text: "text", script: "script" },
+            groupColor: "groupColor",
+            fixedPosition: true,
+          },
+        ],
+        randomized: {
+          active: true,
+          type: "type",
+          fixedPositionFor: ["1", "2"],
+          order: {
+            recordedFormat: "recordedFormat",
+            script: "script",
+          },
+        },
       },
     ],
     extraData: {
@@ -117,8 +133,6 @@ const NewQuestionContentType2: QuestionContent = new QuestionContent(
     optionsDisplay: [[{ true: null, false: true }]],
   }
 );
-
-NewQuestionContentType2.meta.randomized[0].order.array;
 
 const NewBlockContent = new BlockContent(
   "NewBlockContentId",
