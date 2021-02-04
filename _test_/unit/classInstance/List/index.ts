@@ -66,9 +66,9 @@ const NewQuestionnaireListType2 = new Questionnaire(
   {
     lan: ["English"],
     defaultLan: "English",
-    scripts: { first: NewScriptItem },
+    scripts: { first: { name: "123", data: NewScriptItem } },
     optionLists: {
-      list: NewOptionList,
+      list: { name: "some", data: NewOptionList },
     },
   },
   { comment: "comment" },

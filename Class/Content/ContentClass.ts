@@ -92,7 +92,7 @@ type QuestionContentMetaType = {
     }>;
     randomized: {
       active: boolean;
-      type: string;
+      type: "auto" | "script";
       fixedPositionFor: Array<string>;
       order: {
         recordedFormat: string;

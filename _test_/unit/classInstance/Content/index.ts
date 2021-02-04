@@ -113,7 +113,7 @@ const NewQuestionContentType2: QuestionContent = new QuestionContent(
         ],
         randomized: {
           active: true,
-          type: "type",
+          type: "auto",
           fixedPositionFor: ["1", "2"],
           order: {
             recordedFormat: "recordedFormat",

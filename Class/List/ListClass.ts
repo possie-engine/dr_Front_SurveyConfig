@@ -56,10 +56,10 @@ class Questionnaire extends List {
     lan: Array<string>;
     defaultLan: string;
     scripts: {
-      [key: string]: ScriptItem;
+      [key: string]: { name: string; data: ScriptItem };
     };
     optionLists: {
-      [key: string]: OptionList;
+      [key: string]: { name: string; data: OptionList };
     };
   };
   constructor(
@@ -69,10 +69,10 @@ class Questionnaire extends List {
       lan: Array<string>;
       defaultLan: string;
       scripts: {
-        [key: string]: ScriptItem;
+        [key: string]: { name: string; data: ScriptItem };
       };
       optionLists: {
-        [key: string]: OptionList;
+        [key: string]: { name: string; data: OptionList };
       };
     },
     editor: { comment: string },
@@ -152,16 +152,16 @@ class OptionList extends List {
   public meta: {
     link: {
       key: string;
-    };
-  };
+    } | null;
+  } | null;
   constructor(
     id: string,
     kind: "OptionList",
     meta: {
       link: {
         key: string;
-      };
-    },
+      } | null;
+    } | null,
     editor: {
       comment: string;
     },
