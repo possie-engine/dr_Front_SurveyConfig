@@ -322,7 +322,7 @@ class ScriptContent extends Content {
   };
   public content: {
     type: "Text" | "Condition";
-    script: ScriptItem | null | string;
+    script: string;
     arguments: Array<string>;
   };
   constructor(
@@ -335,7 +335,7 @@ class ScriptContent extends Content {
     },
     content: {
       type: "Text" | "Condition";
-      script: ScriptItem | null | string;
+      script: string;
       arguments: Array<string>;
     }
   ) {
