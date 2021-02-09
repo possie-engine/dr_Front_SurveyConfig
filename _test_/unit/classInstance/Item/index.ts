@@ -4,7 +4,7 @@ import {
   OptionItem,
   ScriptItem,
   TextScriptItem,
-  ExcutionScriptItem,
+  ExecutionScriptItem,
   ConditionScriptItem,
   BuiltinConditionScriptItem,
   BuiltinExcutionScriptItem,
@@ -64,14 +64,14 @@ const NewTextScriptItemType2 = new TextScriptItem(
   { function: "function" }
 );
 
-const NewExcutionScriptItem = new ExcutionScriptItem(
+const NewExcutionScriptItem = new ExecutionScriptItem(
   "NewExcutionScriptItemId",
   "ExcutionScriptItem",
   { name: "name" },
   null,
   { function: "function" }
 );
-const NewExcutionScriptItemType2 = new ExcutionScriptItem(
+const NewExcutionScriptItemType2 = new ExecutionScriptItem(
   "NewExcutionScriptItemId",
   "ExcutionScriptItem",
   { name: "name" },

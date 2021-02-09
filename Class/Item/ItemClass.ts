@@ -51,7 +51,9 @@ class ScriptItem extends Item {
   constructor(
     id: string,
     kind: string | "ScriptItem",
-    meta: Record<string, unknown> | null,
+    meta: {
+      name: string;
+    },
     editor: Record<string, unknown> | null,
     data: { function: string }
   ) {
@@ -156,18 +158,18 @@ class TextScriptItem extends ScriptItem {
 }
 
 /**
- * Item Third level ExcutionScriptItem Class extend from ScriptItem
+ * Item Third level ExecutionScriptItem Class extend from ScriptItem
  * @param {string} id the id of the Item
- * @param {'ExcutionScriptItem' | string} kind the Item kind is type of 'ExcutionScriptItem' or string
+ * @param {'ExecutionScriptItem' | string} kind the Item kind is type of 'ExcutionScriptItem' or string
  * @param {object | null} meta the meta data of the Item
  * @param {object | null} editor the editor of the Item
  * @param {object} data the data of the Item
  */
-class ExcutionScriptItem extends ScriptItem {
+class ExecutionScriptItem extends ScriptItem {
   public meta: { name: string };
   constructor(
     id: string,
-    kind: "ExcutionScriptItem" | string,
+    kind: "ExecutionScriptItem" | string,
     meta: { name: string },
     editor: Record<string, unknown> | null,
     data: { function: string }
@@ -229,7 +231,7 @@ class BuiltinTextScriptItem extends TextScriptItem {
  * @param {object | null} editor the editor of the Item
  * @param {object} data the data of the Item
  */
-class BuiltinExcutionScriptItem extends ExcutionScriptItem {
+class BuiltinExcutionScriptItem extends ExecutionScriptItem {
   constructor(
     id: string,
     kind: "BuiltinExcutionScriptItem",
@@ -268,7 +270,7 @@ export {
   OptionItem,
   HtmlItem,
   TextScriptItem,
-  ExcutionScriptItem,
+  ExecutionScriptItem,
   ConditionScriptItem,
   BuiltinTextScriptItem,
   BuiltinExcutionScriptItem,

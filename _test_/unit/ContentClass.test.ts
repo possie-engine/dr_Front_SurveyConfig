@@ -35,7 +35,7 @@ import {
   OptionList,
   ConditionList,
   TextList,
-  ExcutionScriptItem,
+  ExecutionScriptItem,
   HtmlItem,
   ScriptItem,
 } from "../../Class";
@@ -578,7 +578,7 @@ describe("ExecutionContent Class Test", () => {
     });
     it("NewExecutionContent content have markers propety", () => {
       expect(NewExecutionContent.content.excution).toBeInstanceOf(
-        ExcutionScriptItem
+        ExecutionScriptItem
       );
     });
   });

@@ -10,7 +10,7 @@ import {
   BuiltinExcutionScriptItem,
   BuiltinTextScriptItem,
   ConditionScriptItem,
-  ExcutionScriptItem,
+  ExecutionScriptItem,
   HtmlItem,
   Item,
   OptionItem,
@@ -322,7 +322,7 @@ describe("TextScriptItem class test", () => {
 /* <------------------------------------ **** Item ExcutionScriptItem Test START **** ------------------------------------ */
 describe("ExcutionScriptItem class test", () => {
   it("NewExcutionScriptItem is an instance of ExcutionScriptItem", () => {
-    expect(NewExcutionScriptItem).toBeInstanceOf(ExcutionScriptItem);
+    expect(NewExcutionScriptItem).toBeInstanceOf(ExecutionScriptItem);
   });
   describe("NewExcutionScriptItem Id test", () => {
     it("NewExcutionScriptItem id is NewExcutionScriptItemId", () => {

@@ -7,7 +7,7 @@
 
 import { Ele } from "../EleClass";
 import {
-  ExcutionScriptItem,
+  ExecutionScriptItem,
   HtmlItem,
   OptionItem,
   ScriptItem,
@@ -285,7 +285,7 @@ class MarkContent extends Content {
 class ExecutionContent extends Content {
   public content: {
     type: "Execution";
-    excution: ExcutionScriptItem;
+    excution: ExecutionScriptItem;
   };
   constructor(
     id: string,
@@ -294,7 +294,7 @@ class ExecutionContent extends Content {
     editor: Record<string, unknown> | null,
     content: {
       type: "Execution";
-      excution: ExcutionScriptItem;
+      excution: ExecutionScriptItem;
     }
   ) {
     super(id, kind, meta, editor, content);
