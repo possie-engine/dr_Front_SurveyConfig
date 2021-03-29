@@ -58,6 +58,12 @@ class Questionnaire extends List {
     scripts: {
       [key: string]: { name: string; data: ScriptItem };
     };
+    builtin_scripts: {
+      [key: string]: {
+        name: string;
+        pointer: string;
+      };
+    };
     optionLists: {
       [key: string]: { name: string; data: OptionList };
     };
@@ -70,6 +76,12 @@ class Questionnaire extends List {
       defaultLan: string;
       scripts: {
         [key: string]: { name: string; data: ScriptItem };
+      };
+      builtin_scripts: {
+        [key: string]: {
+          name: string;
+          pointer: string;
+        };
       };
       optionLists: {
         [key: string]: { name: string; data: OptionList };

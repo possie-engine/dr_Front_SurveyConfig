@@ -35,7 +35,7 @@ const NewScriptContent = new ScriptContent(
   "ScriptContent",
   null,
   { comment: "comment", instruction: NewHtmlItem },
-  { type: "Condition", script: NewScriptItem, arguments: ["arguments"] }
+  { type: "Condition", script: "script", arguments: ["arguments"] }
 );
 const NewScriptContentType2 = new ScriptContent(
   "ScriptContentId",
@@ -169,14 +169,22 @@ const NewExecutionContent = new ExecutionContent(
   "ExecutionContent",
   null,
   null,
-  { type: "Execution", excution: NewExcutionScriptItem }
+  {
+    type: "Execution",
+    excution: [{ script_mark: "script_mark", script: "id10231" }],
+    arguments: [[{ type: "type", value: "value" }]],
+  }
 );
 const NewExecutionContentType2 = new ExecutionContent(
   "ExecutionContentId",
   "ExecutionContent",
   {},
   {},
-  { type: "Execution", excution: NewExcutionScriptItem }
+  {
+    type: "Execution",
+    excution: [{ script_mark: "script_mark", script: "id10231" }],
+    arguments: [[{ type: "type", value: "value" }]],
+  }
 );
 
 const NewLoopContent = new LoopContent(

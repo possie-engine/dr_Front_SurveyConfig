@@ -67,6 +67,12 @@ const NewQuestionnaireListType2 = new Questionnaire(
     lan: ["English"],
     defaultLan: "English",
     scripts: { first: { name: "123", data: NewScriptItem } },
+    builtin_scripts: {
+      test: {
+        name: "test",
+        pointer: "test",
+      },
+    },
     optionLists: {
       list: { name: "some", data: NewOptionList },
     },

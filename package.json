@@ -1,6 +1,6 @@
 {
-  "name": "@possie-engine/survey_config",
-  "version": "0.0.21",
+  "name": "@possie-engine/dr_front_surveyconfig",
+  "version": "0.0.1",
   "description": "survey configuration",
   "main": "index.js",
   "scripts": {
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/possie-engine/survey_config.git"
+    "url": "git+https://github.com/possie-engine/dr_Front_SurveyConfig.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/possie-engine/survey_config/issues"
+    "url": "https://github.com/possie-engine/dr_Front_SurveyConfig/issues"
   },
-  "homepage": "https://github.com/possie-engine/survey_config#readme",
+  "homepage": "https://github.com/possie-engine/dr_Front_SurveyConfig#readme",
   "devDependencies": {
     "@types/jest": "^26.0.15",
     "jest": "^26.6.3",

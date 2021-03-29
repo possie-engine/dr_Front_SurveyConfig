@@ -577,9 +577,7 @@ describe("ExecutionContent Class Test", () => {
       expect(NewExecutionContent.content.type).toEqual("Execution");
     });
     it("NewExecutionContent content have markers propety", () => {
-      expect(NewExecutionContent.content.excution).toBeInstanceOf(
-        ExecutionScriptItem
-      );
+      expect(typeof NewExecutionContent.content.excution).toEqual("object");
     });
   });
   describe("NewExecutionContent function test", () => {
@@ -641,7 +639,7 @@ describe("ScriptContent Class Test", () => {
       expect(NewScriptContent.content.type).toEqual("Condition");
     });
     it("NewScriptContent content have markers propety", () => {
-      expect(NewScriptContent.content.script).toBeInstanceOf(ScriptItem);
+      expect(typeof NewScriptContent.content.script).toEqual("string");
     });
     it("NewScriptContent content have markers propety", () => {
       expect(typeof NewScriptContent.content.arguments[0]).toEqual("string");

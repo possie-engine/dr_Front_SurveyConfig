@@ -285,7 +285,16 @@ class MarkContent extends Content {
 class ExecutionContent extends Content {
   public content: {
     type: "Execution";
-    excution: ExecutionScriptItem;
+    excution: Array<{
+      script_mark: string;
+      script: string;
+    }>;
+    arguments: Array<
+      Array<{
+        type: string;
+        value: string;
+      }>
+    >;
   };
   constructor(
     id: string,
@@ -294,7 +303,16 @@ class ExecutionContent extends Content {
     editor: Record<string, unknown> | null,
     content: {
       type: "Execution";
-      excution: ExecutionScriptItem;
+      excution: Array<{
+        script_mark: string;
+        script: string;
+      }>;
+      arguments: Array<
+        Array<{
+          type: string;
+          value: string;
+        }>
+      >;
     }
   ) {
     super(id, kind, meta, editor, content);
