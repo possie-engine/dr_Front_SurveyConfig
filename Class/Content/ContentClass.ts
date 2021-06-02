@@ -71,7 +71,16 @@ type QuestionContentMetaType = {
   randomized: Array<{
     active: boolean;
     type: "auto" | "script";
-    fixedPositionFor: Array<string>;
+    options: {
+      [key: string]: {
+        code: string;
+      };
+    };
+    fixedPositionFor: {
+      [key: string]: {
+        position: number;
+      };
+    };
     order: {
       recordedFormat: string;
       script: string;
@@ -79,21 +88,35 @@ type QuestionContentMetaType = {
   }>;
   grouped: Array<{
     active: boolean;
-    members: Array<{
-      id: string;
-      code: string;
-      options: Array<string>;
-      title: {
-        text: string;
-        script: null | string;
+    members: {
+      [key: string]: {
+        id: string;
+        code: string;
+        options: {
+          [key: string]: {
+            code: string;
+          };
+        };
+        title: {
+          text: string;
+          script: null | string;
+        };
+        groupColor: string;
       };
-      groupColor: string;
-      fixedPosition: boolean;
-    }>;
+    };
     randomized: {
       active: boolean;
       type: "auto" | "script";
-      fixedPositionFor: Array<string>;
+      options: {
+        [key: string]: {
+          code: string;
+        };
+      };
+      fixedPositionFor: {
+        [key: string]: {
+          position: number;
+        };
+      };
       order: {
         recordedFormat: string;
         script: string;
@@ -101,7 +124,11 @@ type QuestionContentMetaType = {
     };
   }>;
   extraData: {
-    oe: Record<string, unknown>;
+    oe: {
+      [key: string]: {
+        placeHolder: string;
+      };
+    };
   };
 };
 class QuestionContent extends Content {
@@ -171,7 +198,7 @@ class ConditionContent extends Content {
  * @param {object} Content the content of the Content
  */
 class TextContent extends Content {
-  public editor: { comment: string };
+  public editor: Record<string, unknown> | null;
   public content: {
     type: string;
     list: TextList;
@@ -181,7 +208,7 @@ class TextContent extends Content {
     id: string,
     kind: "TextContent",
     meta: Record<string, unknown> | null,
-    editor: { comment: string },
+    editor: Record<string, unknown> | null,
     content: {
       type: string;
       list: TextList;
@@ -245,7 +272,10 @@ class BlockContent extends Content {
 class MarkContent extends Content {
   public content: {
     type: "Mark" | string;
-    markers: Array<string>;
+    markers: Array<{
+      id: string;
+      name: string;
+    }>;
     logics: Array<ConditionContent>;
     [key: string]: unknown;
   };
@@ -256,13 +286,16 @@ class MarkContent extends Content {
     editor: Record<string, unknown> | null,
     content: {
       type: "Mark" | string;
-      markers: Array<string>;
+      markers: Array<{
+        id: string;
+        name: string;
+      }>;
       logics: Array<ConditionContent>;
       [key: string]: unknown;
     }
   ) {
     super(id, kind, meta, editor, content);
-    this.content = { ...content, type: "Mark" };
+    this.content = content;
   }
   public validateContentType() {
     return null;
@@ -285,16 +318,13 @@ class MarkContent extends Content {
 class ExecutionContent extends Content {
   public content: {
     type: "Execution";
-    excution: Array<{
-      script_mark: string;
-      script: string;
-    }>;
-    arguments: Array<
-      Array<{
+    excutions: Array<{
+      id: string;
+      arguments: Array<{
         type: string;
         value: string;
-      }>
-    >;
+      }>;
+    }>;
   };
   constructor(
     id: string,
@@ -303,16 +333,13 @@ class ExecutionContent extends Content {
     editor: Record<string, unknown> | null,
     content: {
       type: "Execution";
-      excution: Array<{
-        script_mark: string;
-        script: string;
-      }>;
-      arguments: Array<
-        Array<{
+      excutions: Array<{
+        id: string;
+        arguments: Array<{
           type: string;
           value: string;
-        }>
-      >;
+        }>;
+      }>;
     }
   ) {
     super(id, kind, meta, editor, content);
@@ -335,26 +362,34 @@ class ExecutionContent extends Content {
  */
 class ScriptContent extends Content {
   public editor: {
-    comment: string;
     instruction: HtmlItem;
   };
   public content: {
     type: "Text" | "Condition";
-    script: string;
-    arguments: Array<string>;
+    execution: {
+      id: string;
+      arguments: Array<{
+        type: string;
+        value: string;
+      }>;
+    };
   };
   constructor(
     id: string,
     kind: "ScriptContent",
     meta: Record<string, unknown> | null,
     editor: {
-      comment: string;
       instruction: HtmlItem;
     },
     content: {
       type: "Text" | "Condition";
-      script: string;
-      arguments: Array<string>;
+      execution: {
+        id: string;
+        arguments: Array<{
+          type: string;
+          value: string;
+        }>;
+      };
     }
   ) {
     super(id, kind, meta, editor, content);
@@ -422,9 +457,16 @@ class LoopContent extends BlockContent {
 class QuotaContent extends MarkContent {
   public content: {
     type: "Quota";
-    markers: Array<string>;
+    markers: Array<{
+      id: string;
+      name: string;
+    }>;
     logics: Array<ConditionContent>;
-    quotas: Array<number>;
+    quotas: {
+      [key: string]: {
+        number: number;
+      };
+    };
   };
   constructor(
     id: string,
@@ -433,9 +475,16 @@ class QuotaContent extends MarkContent {
     editor: Record<string, unknown> | null,
     content: {
       type: "Quota";
-      markers: Array<string>;
+      markers: Array<{
+        id: string;
+        name: string;
+      }>;
       logics: Array<ConditionContent>;
-      quotas: Array<number>;
+      quotas: {
+        [key: string]: {
+          number: number;
+        };
+      };
     }
   ) {
     super(id, kind, meta, editor, content);

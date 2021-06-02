@@ -47,7 +47,11 @@ class Item extends Ele {
  * @param {object} data the data of the Item
  */
 class ScriptItem extends Item {
-  public data: { function: string };
+  public data: {
+    function: string | null;
+    arguments: Array<Record<string, unknown>> | null;
+    information: string | null;
+  };
   constructor(
     id: string,
     kind: string | "ScriptItem",
@@ -55,7 +59,11 @@ class ScriptItem extends Item {
       name: string;
     },
     editor: Record<string, unknown> | null,
-    data: { function: string }
+    data: {
+      function: string | null;
+      arguments: Array<Record<string, unknown>> | null;
+      information: string | null;
+    }
   ) {
     super(id, kind, meta, editor, data);
     this.data = data;
@@ -77,10 +85,11 @@ class OptionItem extends Item {
   public editor: {
     comment: string;
     instruction: HtmlItem;
+    task: string;
   };
   public data: {
     code: string;
-    text: { default: TextContent; [key: string]: TextContent };
+    text: { [key: string]: TextContent };
   };
   constructor(
     id: string,
@@ -89,10 +98,11 @@ class OptionItem extends Item {
     editor: {
       comment: string;
       instruction: HtmlItem;
+      task: string;
     },
     data: {
       code: string;
-      text: { default: TextContent; [key: string]: TextContent };
+      text: { [key: string]: TextContent };
     }
   ) {
     super(id, kind, meta, editor, data);
@@ -121,7 +131,7 @@ class HtmlItem extends Item {
     id: string,
     kind: "HtmlItem",
     meta: Record<string, unknown> | null,
-    editor: { comment: string },
+    editor: { comment: string; task: string },
     data: { html: string }
   ) {
     super(id, kind, meta, editor, data);
@@ -150,7 +160,11 @@ class TextScriptItem extends ScriptItem {
     kind: "TextScriptItem" | string,
     meta: { name: string },
     editor: Record<string, unknown> | null,
-    data: { function: string }
+    data: {
+      function: string;
+      arguments: Array<{ type: string; instruction: string }>;
+      information: string;
+    }
   ) {
     super(id, kind, meta, editor, data);
     this.meta = meta;
@@ -172,7 +186,11 @@ class ExecutionScriptItem extends ScriptItem {
     kind: "ExecutionScriptItem" | string,
     meta: { name: string },
     editor: Record<string, unknown> | null,
-    data: { function: string }
+    data: {
+      function: string;
+      arguments: Array<{ type: string; instruction: string }>;
+      information: string;
+    }
   ) {
     super(id, kind, meta, editor, data);
     this.meta = meta;
@@ -194,7 +212,11 @@ class ConditionScriptItem extends ScriptItem {
     kind: "ExcutionScriptItem" | string,
     meta: { name: string },
     editor: Record<string, unknown> | null,
-    data: { function: string }
+    data: {
+      function: string;
+      arguments: Array<{ type: string; instruction: string }>;
+      information: string;
+    }
   ) {
     super(id, kind, meta, editor, data);
     this.meta = meta;
@@ -217,7 +239,12 @@ class BuiltinTextScriptItem extends TextScriptItem {
     kind: "BuiltinTextScriptItem",
     meta: { name: string },
     editor: Record<string, unknown> | null,
-    data: { function: string }
+    data: {
+      function: string;
+      arguments: Array<{ type: string; instruction: string }>;
+      information: string;
+      link: string;
+    }
   ) {
     super(id, kind, meta, editor, data);
   }
@@ -237,7 +264,12 @@ class BuiltinExcutionScriptItem extends ExecutionScriptItem {
     kind: "BuiltinExcutionScriptItem",
     meta: { name: string },
     editor: Record<string, unknown> | null,
-    data: { function: string }
+    data: {
+      function: string;
+      arguments: Array<{ type: string; instruction: string }>;
+      information: string;
+      link: string;
+    }
   ) {
     super(id, kind, meta, editor, data);
   }
@@ -257,7 +289,12 @@ class BuiltinConditionScriptItem extends ConditionScriptItem {
     kind: "BuiltinConditionScriptItem",
     meta: { name: string },
     editor: Record<string, unknown> | null,
-    data: { function: string }
+    data: {
+      function: string;
+      arguments: Array<{ type: string; instruction: string }>;
+      information: string;
+      link: string;
+    }
   ) {
     super(id, kind, meta, editor, data);
   }

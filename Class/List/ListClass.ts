@@ -20,12 +20,12 @@ import { Node } from "../Node/NodeClass";
  */
 class List extends Ele {
   public list: unknown[];
-  public editor: { comment: string; [key: string]: unknown };
+  public editor: { comment: string; task: string };
   constructor(
     id: string,
     kind: string | "List",
     meta: Record<string, unknown> | null,
-    editor: { comment: string },
+    editor: { comment: string; task: string },
     list: unknown[]
   ) {
     super(id, kind, meta, editor);
@@ -50,7 +50,7 @@ class List extends Ele {
  * @param {object} list the list type is the node type
  */
 class Questionnaire extends List {
-  public editor: { comment: string };
+  public editor: { comment: string; task: string };
   public list: Array<Node>;
   public meta: {
     lan: Array<string>;
@@ -61,16 +61,38 @@ class Questionnaire extends List {
     builtin_scripts: {
       [key: string]: {
         name: string;
-        pointer: string;
+        data: string;
       };
     };
     optionLists: {
       [key: string]: { name: string; data: OptionList };
     };
   };
+  public publication_version: {
+    base_version: {
+      flag: string;
+      id: string;
+    };
+    change_log: string;
+  };
+  public binding: {
+    owner: string;
+    survey: string;
+  };
   constructor(
     id: string,
     kind: "QuestionnaireList",
+    publication_version: {
+      base_version: {
+        flag: string;
+        id: string;
+      };
+      change_log: string;
+    },
+    binding: {
+      owner: string;
+      survey: string;
+    },
     meta: {
       lan: Array<string>;
       defaultLan: string;
@@ -80,20 +102,22 @@ class Questionnaire extends List {
       builtin_scripts: {
         [key: string]: {
           name: string;
-          pointer: string;
+          data: string;
         };
       };
       optionLists: {
         [key: string]: { name: string; data: OptionList };
       };
     },
-    editor: { comment: string },
+    editor: { comment: string; task: string },
     list: Array<Node>
   ) {
     super(id, kind, meta, editor, list);
     this.editor = editor;
     this.list = list;
     this.meta = meta;
+    this.publication_version = publication_version;
+    this.binding = binding;
   }
   public validateListNodes() {
     return null;
@@ -109,13 +133,13 @@ class Questionnaire extends List {
  * @param {object} list the list type is the node type
  */
 class TextList extends List {
-  public editor: { comment: string };
+  public editor: { comment: string; task: string };
   public list: Array<HtmlItem | ScriptContent>;
   constructor(
     id: string,
     kind: "TextList",
     meta: Record<string, unknown> | null,
-    editor: { comment: string },
+    editor: { comment: string; task: string },
     list: Array<HtmlItem | ScriptContent>
   ) {
     super(id, kind, meta, editor, list);
@@ -133,13 +157,13 @@ class TextList extends List {
  * @param {object} list the list type is the node type
  */
 class ConditionList extends List {
-  public editor: { comment: string };
+  public editor: { comment: string; task: string };
   public list: Array<ConditionContent | ScriptContent | boolean>;
   constructor(
     id: string,
     kind: "ConditionList",
     meta: Record<string, unknown> | null,
-    editor: { comment: string },
+    editor: { comment: string; task: string },
     list: Array<ConditionContent | ScriptContent | boolean>
   ) {
     super(id, kind, meta, editor, list);
@@ -157,11 +181,10 @@ class ConditionList extends List {
  * @param {object} list the list type is the node type
  */
 class OptionList extends List {
-  public editor: {
-    comment: string;
-  };
+  public editor: { comment: string; task: string };
   public list: Array<OptionItem>;
   public meta: {
+    name: string | null;
     link: {
       key: string;
     } | null;
@@ -170,13 +193,12 @@ class OptionList extends List {
     id: string,
     kind: "OptionList",
     meta: {
+      name: string | null;
       link: {
         key: string;
       } | null;
     } | null,
-    editor: {
-      comment: string;
-    },
+    editor: { comment: string; task: string },
     list: Array<OptionItem>
   ) {
     super(id, kind, meta, editor, list);

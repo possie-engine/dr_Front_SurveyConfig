@@ -42,7 +42,9 @@ class Node extends Ele {
   constructor(
     id: string,
     kind: string | "Node",
-    meta: Record<string, unknown> | null,
+    meta: {
+      node_label: string;
+    },
     editor: { comment: string; instruction: HtmlItem },
     structure: {
       code: string;
@@ -88,8 +90,10 @@ class QuestionNode extends Node {
   constructor(
     id: string,
     kind: "QuestionNode",
-    meta: Record<string, unknown> | null,
-    editor: { comment: string; instruction: HtmlItem },
+    meta: {
+      node_label: string;
+    },
+    editor: { comment: string; instruction: HtmlItem; task: string },
     structure: {
       code: string;
       content: QuestionContent;
@@ -135,8 +139,10 @@ class BlockNode extends Node {
   constructor(
     id: string,
     kind: "BlockNode" | string,
-    meta: Record<string, unknown> | null,
-    editor: { comment: string; instruction: HtmlItem },
+    meta: {
+      node_label: string;
+    },
+    editor: { comment: string; instruction: HtmlItem; task: string },
     structure: {
       code: string;
       content: BlockContent;
@@ -175,8 +181,10 @@ class ExecutionNode extends Node {
   constructor(
     id: string,
     kind: "ExecutionNode",
-    meta: Record<string, unknown> | null,
-    editor: { comment: string; instruction: HtmlItem },
+    meta: {
+      node_label: string;
+    },
+    editor: { comment: string; instruction: HtmlItem; task: string },
     structure: {
       code: string;
       content: ExecutionContent;
@@ -215,8 +223,10 @@ class MarkNode extends Node {
   constructor(
     id: string,
     kind: "MarkNode" | string,
-    meta: Record<string, unknown> | null,
-    editor: { comment: string; instruction: HtmlItem },
+    meta: {
+      node_label: string;
+    },
+    editor: { comment: string; instruction: HtmlItem; task: string },
     structure: {
       code: string;
       content: MarkContent;
@@ -257,8 +267,10 @@ class LoopNode extends BlockNode {
   constructor(
     id: string,
     kind: "LoopNode",
-    meta: Record<string, unknown> | null,
-    editor: { comment: string; instruction: HtmlItem },
+    meta: {
+      node_label: string;
+    },
+    editor: { comment: string; instruction: HtmlItem; task: string },
     structure: {
       code: string;
       content: LoopContent;
@@ -290,8 +302,10 @@ class QuotaNode extends MarkNode {
   constructor(
     id: string,
     kind: "QuotaNode",
-    meta: Record<string, unknown> | null,
-    editor: { comment: string; instruction: HtmlItem },
+    meta: {
+      node_label: string;
+    },
+    editor: { comment: string; instruction: HtmlItem; task: string },
     structure: {
       code: string;
       content: QuotaContent;
