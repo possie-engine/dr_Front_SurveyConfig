@@ -83,7 +83,8 @@ type QuestionContentMetaType = {
     };
     order: {
       recordedFormat: string;
-      script: string;
+      script: string | null;
+      predefined: Array<string>;
     };
   }>;
   grouped: Array<{
@@ -102,6 +103,11 @@ type QuestionContentMetaType = {
           script: null | string;
         };
         groupColor: string;
+        order: {
+          recordedFormat: string;
+          script: string | null;
+          predefined: Array<string>;
+        };
       };
     };
     randomized: {
@@ -119,7 +125,8 @@ type QuestionContentMetaType = {
       };
       order: {
         recordedFormat: string;
-        script: string;
+        script: string | null;
+        predefined: Array<string>;
       };
     };
   }>;
