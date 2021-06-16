@@ -68,31 +68,13 @@ class Questionnaire extends List {
       [key: string]: { name: string; data: OptionList };
     };
   };
-  public publication_version: {
-    base_version: {
-      flag: string;
-      id: string;
-    };
-    change_log: string;
-  };
-  public binding: {
-    owner: string;
-    survey: string;
-  };
+  public survey_name: string;
+  public survey_note: string;
   constructor(
     id: string,
     kind: "QuestionnaireList",
-    publication_version: {
-      base_version: {
-        flag: string;
-        id: string;
-      };
-      change_log: string;
-    },
-    binding: {
-      owner: string;
-      survey: string;
-    },
+    survey_name: string,
+    survey_note: string,
     meta: {
       lan: Array<string>;
       defaultLan: string;
@@ -116,8 +98,8 @@ class Questionnaire extends List {
     this.editor = editor;
     this.list = list;
     this.meta = meta;
-    this.publication_version = publication_version;
-    this.binding = binding;
+    this.survey_name = survey_name;
+    this.survey_note = survey_note;
   }
   public validateListNodes() {
     return null;
