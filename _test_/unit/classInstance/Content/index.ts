@@ -9,93 +9,93 @@ import {
   ScriptContent,
   LoopContent,
   QuotaContent,
-} from "../../../../Class/Content/ContentClass";
+} from '../../../../Class/Content/ContentClass';
 
 import {
   NewExcutionScriptItem,
   NewHtmlItem,
   NewOptionItem,
   NewScriptItem,
-} from "../Item";
-import { NewConditionList, NewOptionList, NewTextList } from "../List";
+} from '../Item';
+import { NewConditionList, NewOptionList, NewTextList } from '../List';
 
-const NewContent = new Content("NewContentId", "Content", null, null, {
-  type: "type",
+const NewContent = new Content('NewContentId', 'Content', null, null, {
+  type: 'type',
 });
 const NewContentType2 = new Content(
-  "NewContentId",
-  "Content",
+  'NewContentId',
+  'Content',
   {},
   {},
-  { type: "type" }
+  { type: 'type' }
 );
 
 const NewScriptContent = new ScriptContent(
-  "ScriptContentId",
-  "ScriptContent",
+  'ScriptContentId',
+  'ScriptContent',
   null,
-  { comment: "comment", instruction: NewHtmlItem },
-  { type: "Condition", script: "script", arguments: ["arguments"] }
+  { comment: 'comment', instruction: NewHtmlItem },
+  { type: 'Condition', script: 'script', arguments: ['arguments'] }
 );
 const NewScriptContentType2 = new ScriptContent(
-  "ScriptContentId",
-  "ScriptContent",
+  'ScriptContentId',
+  'ScriptContent',
   {},
-  { comment: "comment", instruction: NewHtmlItem },
-  { type: "Text", script: null, arguments: ["arguments"] }
+  { comment: 'comment', instruction: NewHtmlItem },
+  { type: 'Text', script: null, arguments: ['arguments'] }
 );
 
 const NewTextContent = new TextContent(
-  "TextContentId",
-  "TextContent",
+  'TextContentId',
+  'TextContent',
   null,
-  { comment: "comment" },
-  { type: "type", list: NewTextList, lan: "default" }
+  { comment: 'comment' },
+  { type: 'type', list: NewTextList, lan: 'default' }
 );
 const NewTextContentType2 = new TextContent(
-  "TextContentId",
-  "TextContent",
+  'TextContentId',
+  'TextContent',
   {},
-  { comment: "string" },
-  { type: "type", list: NewTextList, lan: "cn" }
+  { comment: 'string' },
+  { type: 'type', list: NewTextList, lan: 'cn' }
 );
 
 const NewConditionContent = new ConditionContent(
-  "ConditionContentId",
-  "ConditionContent",
+  'ConditionContentId',
+  'ConditionContent',
   null,
   null,
-  { type: "AND", condition: [NewConditionList] }
+  { type: 'AND', condition: [NewConditionList] }
 );
 const NewConditionContentType2 = new ConditionContent(
-  "ConditionContentId",
-  "ConditionContent",
+  'ConditionContentId',
+  'ConditionContent',
   {},
   {},
-  { type: "IS", condition: [false] }
+  { type: 'IS', condition: [false] }
 );
 
 const NewQuestionContent = new QuestionContent(
-  "QuestionContentId",
-  "QuestionContent",
+  'QuestionContentId',
+  'QuestionContent',
   null,
   null,
   {
-    type: "Single",
+    type: 'Single',
     options: [[NewOptionList]],
-    optionsDisplay: [[{ true: NewConditionContent, false: false }]],
+    optionsDisplay: { demo: { true: NewConditionContent, false: false } },
   }
 );
 const NewQuestionContentType2: QuestionContent = new QuestionContent(
-  "QuestionContentId",
-  "QuestionContent",
+  'QuestionContentId',
+  'QuestionContent',
   {
     randomized: [
       {
         active: false,
-        type: "auto",
-        fixedPositionFor: ["123"],
-        order: { recordedFormat: "recorded formate", script: "123" },
+        type: 'auto',
+        fixedPositionFor: ['123'],
+        order: { recordedFormat: 'recorded formate', script: '123' },
       },
     ],
     grouped: [
@@ -103,21 +103,21 @@ const NewQuestionContentType2: QuestionContent = new QuestionContent(
         active: true,
         members: [
           {
-            id: "id",
-            code: "code",
-            options: ["1", "2"],
-            title: { text: "text", script: "script" },
-            groupColor: "groupColor",
+            id: 'id',
+            code: 'code',
+            options: ['1', '2'],
+            title: { text: 'text', script: 'script' },
+            groupColor: 'groupColor',
             fixedPosition: true,
           },
         ],
         randomized: {
           active: true,
-          type: "auto",
-          fixedPositionFor: ["1", "2"],
+          type: 'auto',
+          fixedPositionFor: ['1', '2'],
           order: {
-            recordedFormat: "recordedFormat",
-            script: "script",
+            recordedFormat: 'recordedFormat',
+            script: 'script',
           },
         },
       },
@@ -128,84 +128,84 @@ const NewQuestionContentType2: QuestionContent = new QuestionContent(
   },
   {},
   {
-    type: "OpenEnd",
+    type: 'OpenEnd',
     options: [[NewOptionList]],
     optionsDisplay: [[{ true: null, false: true }]],
   }
 );
 
 const NewBlockContent = new BlockContent(
-  "NewBlockContentId",
-  "BlockContent",
+  'NewBlockContentId',
+  'BlockContent',
   null,
   null,
-  { type: "some", list: [] }
+  { type: 'some', list: [] }
 );
 const NewBlockContentType2 = new BlockContent(
-  "NewBlockContentId",
-  "BlockContent",
+  'NewBlockContentId',
+  'BlockContent',
   {},
   {},
-  { type: "type", list: [] }
+  { type: 'type', list: [] }
 );
 
 const NewMarkContent = new MarkContent(
-  "MarkContentId",
-  "MarkContent",
+  'MarkContentId',
+  'MarkContent',
   null,
   null,
-  { type: "type", markers: ["markers"], logics: [NewConditionContent] }
+  { type: 'type', markers: ['markers'], logics: [NewConditionContent] }
 );
 const NewMarkContentType2 = new MarkContent(
-  "MarkContentId",
-  "MarkContent",
+  'MarkContentId',
+  'MarkContent',
   {},
   {},
-  { type: "type", markers: ["markers"], logics: [NewConditionContent] }
+  { type: 'type', markers: ['markers'], logics: [NewConditionContent] }
 );
 
 const NewExecutionContent = new ExecutionContent(
-  "ExecutionContentId",
-  "ExecutionContent",
+  'ExecutionContentId',
+  'ExecutionContent',
   null,
   null,
   {
-    type: "Execution",
-    excution: [{ script_mark: "script_mark", script: "id10231" }],
-    arguments: [[{ type: "type", value: "value" }]],
+    type: 'Execution',
+    excution: [{ script_mark: 'script_mark', script: 'id10231' }],
+    arguments: [[{ type: 'type', value: 'value' }]],
   }
 );
 const NewExecutionContentType2 = new ExecutionContent(
-  "ExecutionContentId",
-  "ExecutionContent",
+  'ExecutionContentId',
+  'ExecutionContent',
   {},
   {},
   {
-    type: "Execution",
-    excution: [{ script_mark: "script_mark", script: "id10231" }],
-    arguments: [[{ type: "type", value: "value" }]],
+    type: 'Execution',
+    excution: [{ script_mark: 'script_mark', script: 'id10231' }],
+    arguments: [[{ type: 'type', value: 'value' }]],
   }
 );
 
 const NewLoopContent = new LoopContent(
-  "LoopContentId",
-  "LoopContent",
+  'LoopContentId',
+  'LoopContent',
   null,
   null,
   {
-    type: "Loop",
+    type: 'Loop',
     options: NewOptionList,
     logics: [NewConditionContent],
     list: [],
   }
 );
 const NewLoopContentType2 = new LoopContent(
-  "LoopContentId",
-  "LoopContent",
+  'LoopContentId',
+  'LoopContent',
   {},
   {},
   {
-    type: "Loop",
+    type: 'Loop',
     options: NewOptionList,
     logics: [NewConditionContent],
     list: [],
@@ -213,25 +213,25 @@ const NewLoopContentType2 = new LoopContent(
 );
 
 const NewQuotaContent = new QuotaContent(
-  "QuotaContentId",
-  "QuotaContent",
+  'QuotaContentId',
+  'QuotaContent',
   null,
   null,
   {
-    type: "Quota",
-    markers: ["markers"],
+    type: 'Quota',
+    markers: ['markers'],
     logics: [NewConditionContent],
     quotas: [1],
   }
 );
 const NewQuotaContentType2 = new QuotaContent(
-  "QuotaContentId",
-  "QuotaContent",
+  'QuotaContentId',
+  'QuotaContent',
   {},
   {},
   {
-    type: "Quota",
-    markers: ["markers"],
+    type: 'Quota',
+    markers: ['markers'],
     logics: [NewConditionContent],
     quotas: [1],
   }
