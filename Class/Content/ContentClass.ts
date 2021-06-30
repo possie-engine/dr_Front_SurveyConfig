@@ -61,7 +61,9 @@ class Content extends Ele {
 type QuestionContentContentType = {
   type: 'Single' | 'Multi' | 'OpenEnd';
   options: Array<Array<OptionList>>;
-  optionsDisplay: { [key: string]: ConditionContent | boolean | null };
+  optionsDisplay: {
+    [key: string]: { [key: string]: ConditionContent | boolean | null };
+  };
 };
 type QuestionContentMetaType = {
   randomized: Array<{
