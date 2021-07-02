@@ -33,10 +33,7 @@ class Node extends Ele {
   };
   public structure: {
     code: string;
-    content: unknown;
-    condition: {
-      [key: string]: ConditionContent | boolean | null;
-    };
+    condition: Record<string, unknown>;
     [key: string]: unknown;
   };
   constructor(
@@ -48,7 +45,6 @@ class Node extends Ele {
     editor: { comment: string; instruction: HtmlItem },
     structure: {
       code: string;
-      content: unknown;
       condition: {
         [key: string]: ConditionContent | boolean | null;
       };
@@ -245,6 +241,104 @@ class MarkNode extends Node {
     return null;
   }
 }
+
+/**
+ * Node second level class Display extend from Node
+ * @param {string} id the id of the node
+ * @param {'Display'} kind the node kind is type of 'MarkNode'
+ * @param {object | null} meta the meta data of the node
+ * @param {object} editor the editor of the node
+ * @param {object} structure the node structure data is an object
+ */
+class DisplayNode extends Node {
+  public structure: {
+    code: string;
+    text: {
+      [key: string]: TextContent;
+    };
+    condition: {
+      true: ConditionContent | boolean | null;
+      false: ConditionContent | boolean | null;
+    };
+  };
+  constructor(
+    id: string,
+    kind: "DisplayNode" | string,
+    meta: {
+      node_label: string;
+    },
+    editor: { comment: string; instruction: HtmlItem; task: string },
+    structure: {
+      code: string;
+      text: {
+        [key: string]: TextContent;
+      };
+      condition: {
+        true: ConditionContent | boolean | null;
+        false: ConditionContent | boolean | null;
+      };
+    }
+  ) {
+    super(id, kind, meta, editor, structure);
+    this.structure = structure;
+  }
+  public validateStructureContent() {
+    return null;
+  }
+  public validateStructureCondition() {
+    return null;
+  }
+}
+
+/**
+ * Node second level class Display extend from Node
+ * @param {string} id the id of the node
+ * @param {'ExitNode'} kind the node kind is type of 'MarkNode'
+ * @param {object | null} meta the meta data of the node
+ * @param {object} editor the editor of the node
+ * @param {object} structure the node structure data is an object
+ */
+class ExitNode extends Node {
+  public structure: {
+    code: string;
+    text: {
+      [key: string]: TextContent;
+    };
+    condition: {
+      true: ConditionContent | boolean | null;
+      false: ConditionContent | boolean | null;
+    };
+    setStatus: string;
+  };
+  constructor(
+    id: string,
+    kind: "DisplayNode" | string,
+    meta: {
+      node_label: string;
+    },
+    editor: { comment: string; instruction: HtmlItem; task: string },
+    structure: {
+      code: string;
+      text: {
+        [key: string]: TextContent;
+      };
+      condition: {
+        true: ConditionContent | boolean | null;
+        false: ConditionContent | boolean | null;
+      };
+      setStatus: string;
+    }
+  ) {
+    super(id, kind, meta, editor, structure);
+    this.structure = structure;
+  }
+  public validateStructureContent() {
+    return null;
+  }
+  public validateStructureCondition() {
+    return null;
+  }
+}
 /* <------------------------------------ **** Node Second Level Class END **** ------------------------------------ */
 
 /* <------------------------------------ **** Node Third Level Class START **** ------------------------------------ */
@@ -326,6 +420,8 @@ export {
   BlockNode,
   ExecutionNode,
   MarkNode,
+  ExitNode,
+  DisplayNode,
   LoopNode,
   QuotaNode,
 };
