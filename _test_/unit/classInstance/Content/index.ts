@@ -12,7 +12,7 @@ import {
 } from '../../../../Class/Content/ContentClass';
 
 import {
-  NewExcutionScriptItem,
+  NewExecutionScriptItem,
   NewHtmlItem,
   NewOptionItem,
   NewScriptItem,

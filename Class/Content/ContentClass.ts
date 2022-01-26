@@ -12,7 +12,7 @@ import {
   OptionItem,
   ScriptItem,
 } from '../Item/ItemClass';
-import { ConditionList, OptionList, TextList } from '../List/ListClass';
+import { OptionList, TextList } from '../List/ListClass';
 import { Node } from '../Node/NodeClass';
 
 /* <------------------------------------ **** Content Top Level START **** ------------------------------------ */
@@ -172,7 +172,7 @@ class QuestionContent extends Content {
 class ConditionContent extends Content {
   public content: {
     type: 'AND' | 'OR' | 'RAND' | 'ROR' | 'IS' | 'IS NOT';
-    condition: Array<boolean | ConditionList>;
+    condition: Array<ConditionContent> | ScriptContent | boolean;
   };
   constructor(
     id: string,
@@ -181,7 +181,7 @@ class ConditionContent extends Content {
     editor: Record<string, unknown> | null,
     content: {
       type: 'AND' | 'OR' | 'RAND' | 'ROR' | 'IS' | 'IS NOT';
-      condition: Array<boolean | ConditionList>;
+      condition: Array<ConditionContent> | ScriptContent | boolean;
     }
   ) {
     super(id, kind, meta, editor, content);
@@ -323,7 +323,7 @@ class MarkContent extends Content {
 class ExecutionContent extends Content {
   public content: {
     type: 'Execution';
-    excutions: Array<{
+    executions: Array<{
       id: string;
       arguments: Array<{
         type: string;
@@ -338,7 +338,7 @@ class ExecutionContent extends Content {
     editor: Record<string, unknown> | null,
     content: {
       type: 'Execution';
-      excutions: Array<{
+      executions: Array<{
         id: string;
         arguments: Array<{
           type: string;
@@ -373,10 +373,30 @@ class ScriptContent extends Content {
     type: 'Text' | 'Condition';
     execution: {
       id: string;
-      arguments: Array<{
-        type: string;
-        value: string;
-      }>;
+      arguments: {
+        ['key']: {
+          value:
+            | string
+            | boolean
+            | number
+            | bigint
+            | null
+            | undefined
+            | symbol
+            | object;
+        };
+      };
+      return: {
+        value:
+          | string
+          | boolean
+          | number
+          | bigint
+          | null
+          | undefined
+          | symbol
+          | object;
+      };
     };
   };
   constructor(
@@ -390,10 +410,30 @@ class ScriptContent extends Content {
       type: 'Text' | 'Condition';
       execution: {
         id: string;
-        arguments: Array<{
-          type: string;
-          value: string;
-        }>;
+        arguments: {
+          ['key']: {
+            value:
+              | string
+              | boolean
+              | number
+              | bigint
+              | null
+              | undefined
+              | symbol
+              | object;
+          };
+        };
+        return: {
+          value:
+            | string
+            | boolean
+            | number
+            | bigint
+            | null
+            | undefined
+            | symbol
+            | object;
+        };
       };
     }
   ) {
@@ -465,6 +505,7 @@ class QuotaContent extends MarkContent {
     markers: Array<{
       id: string;
       name: string;
+      go_to_node: string | null;
     }>;
     logics: Array<ConditionContent>;
     quotas: {
@@ -483,6 +524,7 @@ class QuotaContent extends MarkContent {
       markers: Array<{
         id: string;
         name: string;
+        go_to_node: string | null;
       }>;
       logics: Array<ConditionContent>;
       quotas: {
