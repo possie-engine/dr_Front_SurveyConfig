@@ -13,9 +13,9 @@ import {
   QuestionContent,
   QuotaContent,
   TextContent,
-} from "../Content/ContentClass";
-import { Ele } from "../EleClass";
-import { HtmlItem } from "../Item/ItemClass";
+} from '../Content/ContentClass';
+import { Ele } from '../EleClass';
+import { HtmlItem } from '../Item/ItemClass';
 
 /* <------------------------------------ **** Node Top Level Class START **** ------------------------------------ */
 /**
@@ -38,7 +38,7 @@ class Node extends Ele {
   };
   constructor(
     id: string,
-    kind: string | "Node",
+    kind: string | 'Node',
     meta: {
       node_label: string;
     },
@@ -82,10 +82,17 @@ class QuestionNode extends Node {
     condition: {
       [key: string]: ConditionContent | boolean | null;
     };
+    appearance: {
+      plugin: {
+        [key: string]: {
+          name: string;
+        };
+      };
+    };
   };
   constructor(
     id: string,
-    kind: "QuestionNode",
+    kind: 'QuestionNode',
     meta: {
       node_label: string;
     },
@@ -97,6 +104,13 @@ class QuestionNode extends Node {
       instruction: { default: TextContent; [key: string]: TextContent };
       condition: {
         [key: string]: ConditionContent | boolean | null;
+      };
+      appearance: {
+        plugin: {
+          [key: string]: {
+            name: string;
+          };
+        };
       };
     }
   ) {
@@ -134,7 +148,7 @@ class BlockNode extends Node {
   };
   constructor(
     id: string,
-    kind: "BlockNode" | string,
+    kind: 'BlockNode' | string,
     meta: {
       node_label: string;
     },
@@ -176,7 +190,7 @@ class ExecutionNode extends Node {
   };
   constructor(
     id: string,
-    kind: "ExecutionNode",
+    kind: 'ExecutionNode',
     meta: {
       node_label: string;
     },
@@ -218,7 +232,7 @@ class MarkNode extends Node {
   };
   constructor(
     id: string,
-    kind: "MarkNode" | string,
+    kind: 'MarkNode' | string,
     meta: {
       node_label: string;
     },
@@ -263,7 +277,7 @@ class DisplayNode extends Node {
   };
   constructor(
     id: string,
-    kind: "DisplayNode" | string,
+    kind: 'DisplayNode' | string,
     meta: {
       node_label: string;
     },
@@ -312,7 +326,7 @@ class ExitNode extends Node {
   };
   constructor(
     id: string,
-    kind: "DisplayNode" | string,
+    kind: 'DisplayNode' | string,
     meta: {
       node_label: string;
     },
@@ -360,7 +374,7 @@ class LoopNode extends BlockNode {
   };
   constructor(
     id: string,
-    kind: "LoopNode",
+    kind: 'LoopNode',
     meta: {
       node_label: string;
     },
@@ -395,7 +409,7 @@ class QuotaNode extends MarkNode {
   };
   constructor(
     id: string,
-    kind: "QuotaNode",
+    kind: 'QuotaNode',
     meta: {
       node_label: string;
     },

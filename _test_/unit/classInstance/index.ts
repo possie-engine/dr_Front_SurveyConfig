@@ -1,4 +1,4 @@
-import { Ele } from "../../../Class/EleClass";
+import { Ele } from '../../../Class/EleClass';
 import {
   NewContent,
   NewContentType2,
@@ -20,7 +20,7 @@ import {
   NewLoopContentType2,
   NewQuotaContent,
   NewQuotaContentType2,
-} from "./Content";
+} from './Content';
 
 import {
   NewItem,
@@ -32,17 +32,17 @@ import {
   NewOptionItem,
   NewTextScriptItem,
   NewTextScriptItemType2,
-  NewExcutionScriptItem,
-  NewExcutionScriptItemType2,
+  NewExecutionScriptItem,
+  NewExecutionScriptItemType2,
   NewConditionScriptItem,
   NewConditionScriptItemType2,
   NewBuiltinConditionScriptItem,
   NewBuiltinConditionScriptItemType2,
-  NewBuiltinExcutionScriptItem,
-  NewBuiltinExcutionScriptItemType2,
+  NewBuiltinExecutionScriptItem,
+  NewBuiltinExecutionScriptItemType2,
   NewBuiltinTextScriptItem,
   NewBuiltinTextScriptItemType2,
-} from "./Item";
+} from './Item';
 
 import {
   NewList,
@@ -55,7 +55,7 @@ import {
   NewTextListType2,
   NewOptionList,
   NewOptionListType2,
-} from "./List";
+} from './List';
 
 import {
   NewNode,
@@ -72,9 +72,9 @@ import {
   NewLoopNodeType2,
   NewQuotaNode,
   NewQuotaNodeType2,
-} from "./Node";
-const NewEle = new Ele("Eleid", "Ele", null, null);
-const NewEleType2 = new Ele("Eleid", "Ele", {}, {});
+} from './Node';
+const NewEle = new Ele('Eleid', 'Ele', null, null);
+const NewEleType2 = new Ele('Eleid', 'Ele', {}, {});
 
 export {
   NewContent,
@@ -106,14 +106,14 @@ export {
   NewOptionItem,
   NewTextScriptItem,
   NewTextScriptItemType2,
-  NewExcutionScriptItem,
-  NewExcutionScriptItemType2,
+  NewExecutionScriptItem,
+  NewExecutionScriptItemType2,
   NewConditionScriptItem,
   NewConditionScriptItemType2,
   NewBuiltinConditionScriptItem,
   NewBuiltinConditionScriptItemType2,
-  NewBuiltinExcutionScriptItem,
-  NewBuiltinExcutionScriptItemType2,
+  NewBuiltinExecutionScriptItem,
+  NewBuiltinExecutionScriptItemType2,
   NewBuiltinTextScriptItem,
   NewBuiltinTextScriptItemType2,
   NewList,

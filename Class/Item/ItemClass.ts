@@ -5,8 +5,8 @@
  * @lastModify Frank 2020-11-09
  */
 
-import { Ele } from "../EleClass";
-import { TextContent } from "../Content/ContentClass";
+import { Ele } from '../EleClass';
+import { TextContent } from '../Content/ContentClass';
 
 /* <------------------------------------ **** Item Top Level Class START **** ------------------------------------ */
 
@@ -22,7 +22,7 @@ class Item extends Ele {
   public data: Record<string, unknown>;
   constructor(
     id: string,
-    kind: string | "Item",
+    kind: string | 'Item',
     meta: Record<string, unknown> | null,
     editor: Record<string, unknown> | null,
     data: Record<string, unknown>
@@ -49,20 +49,30 @@ class Item extends Ele {
 class ScriptItem extends Item {
   public data: {
     function: string | null;
-    arguments: Array<Record<string, unknown>> | null;
+    arguments: Array<{
+      name: string;
+      type: string;
+      instruction: string;
+    }> | null;
     information: string | null;
+    return: { type: string; instruction: string } | null;
   };
   constructor(
     id: string,
-    kind: string | "ScriptItem",
+    kind: string | 'ScriptItem',
     meta: {
       name: string;
     },
     editor: Record<string, unknown> | null,
     data: {
       function: string | null;
-      arguments: Array<Record<string, unknown>> | null;
+      arguments: Array<{
+        name: string;
+        type: string;
+        instruction: string;
+      }> | null;
       information: string | null;
+      return: { type: string; instruction: string } | null;
     }
   ) {
     super(id, kind, meta, editor, data);
@@ -93,7 +103,7 @@ class OptionItem extends Item {
   };
   constructor(
     id: string,
-    kind: "OptionItem",
+    kind: 'OptionItem',
     meta: Record<string, unknown> | null,
     editor: {
       comment: string;
@@ -129,7 +139,7 @@ class HtmlItem extends Item {
   public data: { html: string };
   constructor(
     id: string,
-    kind: "HtmlItem",
+    kind: 'HtmlItem',
     meta: Record<string, unknown> | null,
     editor: { comment: string; task: string },
     data: { html: string }
@@ -157,13 +167,18 @@ class TextScriptItem extends ScriptItem {
   public meta: { name: string };
   constructor(
     id: string,
-    kind: "TextScriptItem" | string,
+    kind: 'TextScriptItem' | string,
     meta: { name: string },
     editor: Record<string, unknown> | null,
     data: {
       function: string;
-      arguments: Array<{ type: string; instruction: string }>;
-      information: string;
+      arguments: Array<{
+        name: string;
+        type: string;
+        instruction: string;
+      }> | null;
+      information: string | null;
+      return: { type: string; instruction: string } | null;
     }
   ) {
     super(id, kind, meta, editor, data);
@@ -174,7 +189,7 @@ class TextScriptItem extends ScriptItem {
 /**
  * Item Third level ExecutionScriptItem Class extend from ScriptItem
  * @param {string} id the id of the Item
- * @param {'ExecutionScriptItem' | string} kind the Item kind is type of 'ExcutionScriptItem' or string
+ * @param {'ExecutionScriptItem' | string} kind the Item kind is type of 'ExecutionScriptItem' or string
  * @param {object | null} meta the meta data of the Item
  * @param {object | null} editor the editor of the Item
  * @param {object} data the data of the Item
@@ -183,13 +198,18 @@ class ExecutionScriptItem extends ScriptItem {
   public meta: { name: string };
   constructor(
     id: string,
-    kind: "ExecutionScriptItem" | string,
+    kind: 'ExecutionScriptItem' | string,
     meta: { name: string },
     editor: Record<string, unknown> | null,
     data: {
       function: string;
-      arguments: Array<{ type: string; instruction: string }>;
-      information: string;
+      arguments: Array<{
+        name: string;
+        type: string;
+        instruction: string;
+      }> | null;
+      information: string | null;
+      return: { type: string; instruction: string } | null;
     }
   ) {
     super(id, kind, meta, editor, data);
@@ -209,13 +229,18 @@ class ConditionScriptItem extends ScriptItem {
   public meta: { name: string };
   constructor(
     id: string,
-    kind: "ExcutionScriptItem" | string,
+    kind: 'ExecutionScriptItem' | string,
     meta: { name: string },
     editor: Record<string, unknown> | null,
     data: {
       function: string;
-      arguments: Array<{ type: string; instruction: string }>;
-      information: string;
+      arguments: Array<{
+        name: string;
+        type: string;
+        instruction: string;
+      }> | null;
+      information: string | null;
+      return: { type: string; instruction: string } | null;
     }
   ) {
     super(id, kind, meta, editor, data);
@@ -236,13 +261,18 @@ class ConditionScriptItem extends ScriptItem {
 class BuiltinTextScriptItem extends TextScriptItem {
   constructor(
     id: string,
-    kind: "BuiltinTextScriptItem",
+    kind: 'BuiltinTextScriptItem',
     meta: { name: string },
     editor: Record<string, unknown> | null,
     data: {
       function: string;
-      arguments: Array<{ type: string; instruction: string }>;
-      information: string;
+      arguments: Array<{
+        name: string;
+        type: string;
+        instruction: string;
+      }> | null;
+      information: string | null;
+      return: { type: string; instruction: string } | null;
       link: string;
     }
   ) {
@@ -251,23 +281,28 @@ class BuiltinTextScriptItem extends TextScriptItem {
 }
 
 /**
- * Item Fourth level BuiltinExcutionScriptItem Class extend from ScriptItem
+ * Item Fourth level BuiltinExecutionScriptItem Class extend from ScriptItem
  * @param {string} id the id of the Item
- * @param {'BuiltinExcutionScriptItem'} kind the Item kind is type of 'BuiltinExcutionScriptItem'
+ * @param {'BuiltinExecutionScriptItem'} kind the Item kind is type of 'BuiltinExecutionScriptItem'
  * @param {object | null} meta the meta data of the Item
  * @param {object | null} editor the editor of the Item
  * @param {object} data the data of the Item
  */
-class BuiltinExcutionScriptItem extends ExecutionScriptItem {
+class BuiltinExecutionScriptItem extends ExecutionScriptItem {
   constructor(
     id: string,
-    kind: "BuiltinExcutionScriptItem",
+    kind: 'BuiltinExecutionScriptItem',
     meta: { name: string },
     editor: Record<string, unknown> | null,
     data: {
       function: string;
-      arguments: Array<{ type: string; instruction: string }>;
-      information: string;
+      arguments: Array<{
+        name: string;
+        type: string;
+        instruction: string;
+      }> | null;
+      information: string | null;
+      return: { type: string; instruction: string } | null;
       link: string;
     }
   ) {
@@ -286,13 +321,18 @@ class BuiltinExcutionScriptItem extends ExecutionScriptItem {
 class BuiltinConditionScriptItem extends ConditionScriptItem {
   constructor(
     id: string,
-    kind: "BuiltinConditionScriptItem",
+    kind: 'BuiltinConditionScriptItem',
     meta: { name: string },
     editor: Record<string, unknown> | null,
     data: {
       function: string;
-      arguments: Array<{ type: string; instruction: string }>;
-      information: string;
+      arguments: Array<{
+        name: string;
+        type: string;
+        instruction: string;
+      }> | null;
+      information: string | null;
+      return: { type: string; instruction: string } | null;
       link: string;
     }
   ) {
@@ -310,6 +350,6 @@ export {
   ExecutionScriptItem,
   ConditionScriptItem,
   BuiltinTextScriptItem,
-  BuiltinExcutionScriptItem,
+  BuiltinExecutionScriptItem,
   BuiltinConditionScriptItem,
 };
