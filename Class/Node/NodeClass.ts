@@ -86,6 +86,17 @@ class QuestionNode extends Node {
       plugin: {
         [key: string]: {
           name: string;
+          settings: {
+            type: 'map' | 'array' | 'boolean' | 'string' | 'number';
+            description: string;
+            hint: string;
+            value:
+              | object
+              | Array<number | boolean | string>
+              | string
+              | boolean
+              | number;
+          } | null;
         };
       };
     };
@@ -109,6 +120,17 @@ class QuestionNode extends Node {
         plugin: {
           [key: string]: {
             name: string;
+            settings: {
+              type: 'map' | 'array' | 'boolean' | 'string' | 'number';
+              description: string;
+              hint: string;
+              value:
+                | object
+                | Array<number | boolean | string>
+                | string
+                | boolean
+                | number;
+            } | null;
           };
         };
       };
