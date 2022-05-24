@@ -68,7 +68,7 @@ class Questionnaire extends List {
       [key: string]: { name: string; data: OptionList };
     };
     pluginInfo: {
-      [key: string]: { version: string; previewKey: string | null };
+      [key: string]: Array<{ version: string; previewKey: string | null }>;
     };
   };
   public survey_name: string;

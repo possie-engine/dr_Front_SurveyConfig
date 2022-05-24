@@ -6,12 +6,7 @@
  */
 
 import { Ele } from '../EleClass';
-import {
-  ExecutionScriptItem,
-  HtmlItem,
-  OptionItem,
-  ScriptItem,
-} from '../Item/ItemClass';
+import { HtmlItem } from '../Item/ItemClass';
 import { OptionList, TextList } from '../List/ListClass';
 import { Node } from '../Node/NodeClass';
 
@@ -374,7 +369,7 @@ class ScriptContent extends Content {
     execution: {
       id: string;
       arguments: {
-        ['key']: {
+        [key: string]: {
           value:
             | string
             | boolean
@@ -411,7 +406,7 @@ class ScriptContent extends Content {
       execution: {
         id: string;
         arguments: {
-          ['key']: {
+          [key: string]: {
             value:
               | string
               | boolean
