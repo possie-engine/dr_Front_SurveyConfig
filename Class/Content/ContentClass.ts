@@ -6,7 +6,7 @@
  */
 
 import { Ele } from '../EleClass';
-import { HtmlItem } from '../Item/ItemClass';
+import { HtmlItem, OptionItem } from '../Item/ItemClass';
 import { OptionList, TextList } from '../List/ListClass';
 import { Node } from '../Node/NodeClass';
 
@@ -54,8 +54,8 @@ class Content extends Ele {
  */
 
 type QuestionContentContentType = {
-  type: 'Single' | 'Multi' | 'OpenEnd';
-  options: Array<Array<OptionList>>;
+  type: 'Single' | 'Multi' | 'OpenEnd' | 'Numeric';
+  options: Array<Array<OptionList | OptionItem>>;
   optionsDisplay: {
     [key: string]: { [key: string]: ConditionContent | boolean | null };
   };
@@ -377,6 +377,7 @@ class ScriptContent extends Content {
             | bigint
             | null
             | undefined
+            | Array<any>
             | symbol
             | object;
         };
@@ -389,6 +390,7 @@ class ScriptContent extends Content {
           | bigint
           | null
           | undefined
+          | Array<any>
           | symbol
           | object;
       };
@@ -414,6 +416,7 @@ class ScriptContent extends Content {
               | bigint
               | null
               | undefined
+              | Array<any>
               | symbol
               | object;
           };
@@ -426,6 +429,7 @@ class ScriptContent extends Content {
             | bigint
             | null
             | undefined
+            | Array<any>
             | symbol
             | object;
         };

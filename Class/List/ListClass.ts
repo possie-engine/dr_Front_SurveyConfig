@@ -94,7 +94,7 @@ class Questionnaire extends List {
         [key: string]: { name: string; data: OptionList };
       };
       pluginInfo: {
-        [key: string]: { version: string; previewKey: string | null };
+        [key: string]: Array<{ version: string; previewKey: string | null }>;
       };
     },
     editor: { comment: string; task: string },
@@ -145,7 +145,7 @@ class TextList extends List {
  * @param {object} list the list type is the node type
  */
 class OptionList extends List {
-  public editor: { comment: string; task: string };
+  public editor: { comment: string; task: string; instruction: HtmlItem };
   public list: Array<OptionItem>;
   public meta: {
     name: string | null;
@@ -162,7 +162,7 @@ class OptionList extends List {
         key: string;
       } | null;
     } | null,
-    editor: { comment: string; task: string },
+    editor: { comment: string; task: string; instruction: HtmlItem },
     list: Array<OptionItem>
   ) {
     super(id, kind, meta, editor, list);
