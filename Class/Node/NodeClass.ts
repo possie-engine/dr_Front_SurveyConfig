@@ -77,6 +77,7 @@ class QuestionNode extends Node {
   public structure: {
     code: string;
     content: QuestionContent;
+    type: 'required' | 'optional' | null;
     text: { default: TextContent; [key: string]: TextContent };
     instruction: { default: TextContent; [key: string]: TextContent };
     condition: {
@@ -97,6 +98,19 @@ class QuestionNode extends Node {
               | boolean
               | number;
           } | null;
+          lan: {
+            [key: string]: {
+              type: 'map' | 'array' | 'boolean' | 'string' | 'number';
+              description: string;
+              hint: string;
+              value:
+                | object
+                | Array<number | boolean | string>
+                | string
+                | boolean
+                | number;
+            } | null;
+          };
         };
       };
     };
@@ -109,6 +123,7 @@ class QuestionNode extends Node {
     },
     editor: { comment: string; instruction: HtmlItem; task: string },
     structure: {
+      type: 'required' | 'optional' | null;
       code: string;
       content: QuestionContent;
       text: { default: TextContent; [key: string]: TextContent };
@@ -131,6 +146,19 @@ class QuestionNode extends Node {
                 | boolean
                 | number;
             } | null;
+            lan: {
+              [key: string]: {
+                type: 'map' | 'array' | 'boolean' | 'string' | 'number';
+                description: string;
+                hint: string;
+                value:
+                  | object
+                  | Array<number | boolean | string>
+                  | string
+                  | boolean
+                  | number;
+              } | null;
+            };
           };
         };
       };

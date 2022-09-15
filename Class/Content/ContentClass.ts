@@ -127,6 +127,7 @@ type QuestionContentMetaType = {
     oe: {
       [key: string]: {
         placeHolder: string;
+        code: string;
       };
     };
   };
@@ -478,6 +479,9 @@ class LoopContent extends BlockContent {
       options: OptionList;
       logics: Array<ConditionContent>;
       list: Array<Node>;
+      loopItemDisplay: {
+        [key: string]: { [key: string]: ConditionContent | boolean | null };
+      };
     }
   ) {
     super(id, kind, meta, editor, content);
