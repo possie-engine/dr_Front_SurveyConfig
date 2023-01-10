@@ -156,18 +156,29 @@ class HtmlItem extends Item {
 
 /* <------------------------------------ **** Item Third Level Class START **** ------------------------------------ */
 /**
- * Item Third level TextScriptItem Class extend from ScriptItem
+ * Item Third level CustomisedScriptItem Class extend from ScriptItem
  * @param {string} id the id of the Item
- * @param {'TextScriptItem' | string} kind the Item kind is type of 'TextScriptItem' or string
+ * @param {'CustomisedScriptItem' | string} kind the Item kind is type of 'CustomisedScriptItem' or string
  * @param {object | null} meta the meta data of the Item
  * @param {object | null} editor the editor of the Item
  * @param {object} data the data of the Item
  */
-class TextScriptItem extends ScriptItem {
+class CustomisedScriptItem extends ScriptItem {
   public meta: { name: string };
+  public data: {
+    function: string;
+    arguments: Array<{
+      name: string;
+      type: string;
+      instruction: string;
+    }> | null;
+    information: string | null;
+    return: { type: string; instruction: string } | null;
+    status: 'draft' | 'verified';
+  };
   constructor(
     id: string,
-    kind: 'TextScriptItem' | string,
+    kind: 'CustomisedScriptItem' | string,
     meta: { name: string },
     editor: Record<string, unknown> | null,
     data: {
@@ -179,26 +190,39 @@ class TextScriptItem extends ScriptItem {
       }> | null;
       information: string | null;
       return: { type: string; instruction: string } | null;
+      status: 'draft' | 'verified';
     }
   ) {
     super(id, kind, meta, editor, data);
     this.meta = meta;
+    this.data = data;
   }
 }
 
 /**
- * Item Third level ExecutionScriptItem Class extend from ScriptItem
+ * Item Third level BuiltinScriptItem Class extend from ScriptItem
  * @param {string} id the id of the Item
- * @param {'ExecutionScriptItem' | string} kind the Item kind is type of 'ExecutionScriptItem' or string
+ * @param {'BuiltinScriptItem' | string} kind the Item kind is type of 'BuiltinScriptItem' or string
  * @param {object | null} meta the meta data of the Item
  * @param {object | null} editor the editor of the Item
  * @param {object} data the data of the Item
  */
-class ExecutionScriptItem extends ScriptItem {
+class BuiltinScriptItem extends ScriptItem {
   public meta: { name: string };
+  public data: {
+    function: string;
+    arguments: Array<{
+      name: string;
+      type: string;
+      instruction: string;
+    }> | null;
+    information: string | null;
+    return: { type: string; instruction: string } | null;
+    link: string;
+  };
   constructor(
     id: string,
-    kind: 'ExecutionScriptItem' | string,
+    kind: 'BuiltinScriptItem' | string,
     meta: { name: string },
     editor: Record<string, unknown> | null,
     data: {
@@ -210,135 +234,19 @@ class ExecutionScriptItem extends ScriptItem {
       }> | null;
       information: string | null;
       return: { type: string; instruction: string } | null;
+      link: string;
     }
   ) {
     super(id, kind, meta, editor, data);
     this.meta = meta;
+    this.data = data;
   }
 }
 
-/**
- * Item Third level ConditionScriptItem Class extend from ScriptItem
- * @param {string} id the id of the Item
- * @param {'ConditionScriptItem' | string} kind the Item kind is type of 'ConditionScriptItem' or string
- * @param {object | null} meta the meta data of the Item
- * @param {object | null} editor the editor of the Item
- * @param {object} data the data of the Item
- */
-class ConditionScriptItem extends ScriptItem {
-  public meta: { name: string };
-  constructor(
-    id: string,
-    kind: 'ExecutionScriptItem' | string,
-    meta: { name: string },
-    editor: Record<string, unknown> | null,
-    data: {
-      function: string;
-      arguments: Array<{
-        name: string;
-        type: string;
-        instruction: string;
-      }> | null;
-      information: string | null;
-      return: { type: string; instruction: string } | null;
-    }
-  ) {
-    super(id, kind, meta, editor, data);
-    this.meta = meta;
-  }
-}
 /* <------------------------------------ **** Item Third Level Class END **** ------------------------------------ */
 
 /* <------------------------------------ **** Item Fourth Level Class START **** ------------------------------------ */
-/**
- * Item Fourth level BuiltinTextScriptItem Class extend from ScriptItem
- * @param {string} id the id of the Item
- * @param {'BuiltinTextScriptItem'} kind the Item kind is type of 'BuiltinTextScriptItem'
- * @param {object | null} meta the meta data of the Item
- * @param {object | null} editor the editor of the Item
- * @param {object} data the data of the Item
- */
-class BuiltinTextScriptItem extends TextScriptItem {
-  constructor(
-    id: string,
-    kind: 'BuiltinTextScriptItem',
-    meta: { name: string },
-    editor: Record<string, unknown> | null,
-    data: {
-      function: string;
-      arguments: Array<{
-        name: string;
-        type: string;
-        instruction: string;
-      }> | null;
-      information: string | null;
-      return: { type: string; instruction: string } | null;
-      link: string;
-    }
-  ) {
-    super(id, kind, meta, editor, data);
-  }
-}
 
-/**
- * Item Fourth level BuiltinExecutionScriptItem Class extend from ScriptItem
- * @param {string} id the id of the Item
- * @param {'BuiltinExecutionScriptItem'} kind the Item kind is type of 'BuiltinExecutionScriptItem'
- * @param {object | null} meta the meta data of the Item
- * @param {object | null} editor the editor of the Item
- * @param {object} data the data of the Item
- */
-class BuiltinExecutionScriptItem extends ExecutionScriptItem {
-  constructor(
-    id: string,
-    kind: 'BuiltinExecutionScriptItem',
-    meta: { name: string },
-    editor: Record<string, unknown> | null,
-    data: {
-      function: string;
-      arguments: Array<{
-        name: string;
-        type: string;
-        instruction: string;
-      }> | null;
-      information: string | null;
-      return: { type: string; instruction: string } | null;
-      link: string;
-    }
-  ) {
-    super(id, kind, meta, editor, data);
-  }
-}
-
-/**
- * Item Fourth level BuiltinConditionScriptItem Class extend from ScriptItem
- * @param {string} id the id of the Item
- * @param {'BuiltinConditionScriptItem'} kind the Item kind is type of 'BuiltinConditionScriptItem'
- * @param {object | null} meta the meta data of the Item
- * @param {object | null} editor the editor of the Item
- * @param {object} data the data of the Item
- */
-class BuiltinConditionScriptItem extends ConditionScriptItem {
-  constructor(
-    id: string,
-    kind: 'BuiltinConditionScriptItem',
-    meta: { name: string },
-    editor: Record<string, unknown> | null,
-    data: {
-      function: string;
-      arguments: Array<{
-        name: string;
-        type: string;
-        instruction: string;
-      }> | null;
-      information: string | null;
-      return: { type: string; instruction: string } | null;
-      link: string;
-    }
-  ) {
-    super(id, kind, meta, editor, data);
-  }
-}
 /* <------------------------------------ **** Item Fourth Level Class END **** ------------------------------------ */
 
 export {
@@ -346,10 +254,6 @@ export {
   ScriptItem,
   OptionItem,
   HtmlItem,
-  TextScriptItem,
-  ExecutionScriptItem,
-  ConditionScriptItem,
-  BuiltinTextScriptItem,
-  BuiltinExecutionScriptItem,
-  BuiltinConditionScriptItem,
+  CustomisedScriptItem,
+  BuiltinScriptItem,
 };

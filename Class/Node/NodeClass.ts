@@ -77,10 +77,16 @@ class QuestionNode extends Node {
   public structure: {
     code: string;
     content: QuestionContent;
+    type: 'required' | 'optional' | null;
     text: { default: TextContent; [key: string]: TextContent };
     instruction: { default: TextContent; [key: string]: TextContent };
     condition: {
       [key: string]: ConditionContent | boolean | null;
+    };
+    tag: {
+      gov: Array<string> | null;
+      ind: Array<string> | null;
+      user: Array<string> | null;
     };
     appearance: {
       plugin: {
@@ -97,6 +103,19 @@ class QuestionNode extends Node {
               | boolean
               | number;
           } | null;
+          lan: {
+            [key: string]: {
+              type: 'map' | 'array' | 'boolean' | 'string' | 'number';
+              description: string;
+              hint: string;
+              value:
+                | object
+                | Array<number | boolean | string>
+                | string
+                | boolean
+                | number;
+            } | null;
+          };
         };
       };
     };
@@ -109,12 +128,18 @@ class QuestionNode extends Node {
     },
     editor: { comment: string; instruction: HtmlItem; task: string },
     structure: {
+      type: 'required' | 'optional' | null;
       code: string;
       content: QuestionContent;
       text: { default: TextContent; [key: string]: TextContent };
       instruction: { default: TextContent; [key: string]: TextContent };
       condition: {
         [key: string]: ConditionContent | boolean | null;
+      };
+      tag: {
+        gov: Array<string> | null;
+        ind: Array<string> | null;
+        user: Array<string> | null;
       };
       appearance: {
         plugin: {
@@ -131,6 +156,19 @@ class QuestionNode extends Node {
                 | boolean
                 | number;
             } | null;
+            lan: {
+              [key: string]: {
+                type: 'map' | 'array' | 'boolean' | 'string' | 'number';
+                description: string;
+                hint: string;
+                value:
+                  | object
+                  | Array<number | boolean | string>
+                  | string
+                  | boolean
+                  | number;
+              } | null;
+            };
           };
         };
       };
@@ -296,6 +334,37 @@ class DisplayNode extends Node {
       true: ConditionContent | boolean | null;
       false: ConditionContent | boolean | null;
     };
+    appearance: {
+      plugin: {
+        [key: string]: {
+          name: string;
+          settings: {
+            type: 'map' | 'array' | 'boolean' | 'string' | 'number';
+            description: string;
+            hint: string;
+            value:
+              | object
+              | Array<number | boolean | string>
+              | string
+              | boolean
+              | number;
+          } | null;
+          lan: {
+            [key: string]: {
+              type: 'map' | 'array' | 'boolean' | 'string' | 'number';
+              description: string;
+              hint: string;
+              value:
+                | object
+                | Array<number | boolean | string>
+                | string
+                | boolean
+                | number;
+            } | null;
+          };
+        };
+      };
+    };
   };
   constructor(
     id: string,
@@ -312,6 +381,37 @@ class DisplayNode extends Node {
       condition: {
         true: ConditionContent | boolean | null;
         false: ConditionContent | boolean | null;
+      };
+      appearance: {
+        plugin: {
+          [key: string]: {
+            name: string;
+            settings: {
+              type: 'map' | 'array' | 'boolean' | 'string' | 'number';
+              description: string;
+              hint: string;
+              value:
+                | object
+                | Array<number | boolean | string>
+                | string
+                | boolean
+                | number;
+            } | null;
+            lan: {
+              [key: string]: {
+                type: 'map' | 'array' | 'boolean' | 'string' | 'number';
+                description: string;
+                hint: string;
+                value:
+                  | object
+                  | Array<number | boolean | string>
+                  | string
+                  | boolean
+                  | number;
+              } | null;
+            };
+          };
+        };
       };
     }
   ) {

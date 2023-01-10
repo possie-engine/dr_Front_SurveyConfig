@@ -6,12 +6,7 @@
  */
 
 import { Ele } from '../EleClass';
-import {
-  ExecutionScriptItem,
-  HtmlItem,
-  OptionItem,
-  ScriptItem,
-} from '../Item/ItemClass';
+import { HtmlItem, OptionItem } from '../Item/ItemClass';
 import { OptionList, TextList } from '../List/ListClass';
 import { Node } from '../Node/NodeClass';
 
@@ -59,8 +54,8 @@ class Content extends Ele {
  */
 
 type QuestionContentContentType = {
-  type: 'Single' | 'Multi' | 'OpenEnd';
-  options: Array<Array<OptionList>>;
+  type: 'Single' | 'Multi' | 'OpenEnd' | 'Numeric';
+  options: Array<Array<OptionList | OptionItem>>;
   optionsDisplay: {
     [key: string]: { [key: string]: ConditionContent | boolean | null };
   };
@@ -132,6 +127,7 @@ type QuestionContentMetaType = {
     oe: {
       [key: string]: {
         placeHolder: string;
+        code: string;
       };
     };
   };
@@ -374,7 +370,7 @@ class ScriptContent extends Content {
     execution: {
       id: string;
       arguments: {
-        ['key']: {
+        [key: string]: {
           value:
             | string
             | boolean
@@ -382,6 +378,7 @@ class ScriptContent extends Content {
             | bigint
             | null
             | undefined
+            | Array<any>
             | symbol
             | object;
         };
@@ -394,6 +391,7 @@ class ScriptContent extends Content {
           | bigint
           | null
           | undefined
+          | Array<any>
           | symbol
           | object;
       };
@@ -411,7 +409,7 @@ class ScriptContent extends Content {
       execution: {
         id: string;
         arguments: {
-          ['key']: {
+          [key: string]: {
             value:
               | string
               | boolean
@@ -419,6 +417,7 @@ class ScriptContent extends Content {
               | bigint
               | null
               | undefined
+              | Array<any>
               | symbol
               | object;
           };
@@ -431,6 +430,7 @@ class ScriptContent extends Content {
             | bigint
             | null
             | undefined
+            | Array<any>
             | symbol
             | object;
         };
@@ -468,6 +468,9 @@ class LoopContent extends BlockContent {
     options: OptionList;
     logics: Array<ConditionContent>;
     list: Array<Node>;
+    loopItemDisplay: {
+      [key: string]: { [key: string]: ConditionContent | boolean | null };
+    };
   };
   constructor(
     id: string,
@@ -479,6 +482,9 @@ class LoopContent extends BlockContent {
       options: OptionList;
       logics: Array<ConditionContent>;
       list: Array<Node>;
+      loopItemDisplay: {
+        [key: string]: { [key: string]: ConditionContent | boolean | null };
+      };
     }
   ) {
     super(id, kind, meta, editor, content);

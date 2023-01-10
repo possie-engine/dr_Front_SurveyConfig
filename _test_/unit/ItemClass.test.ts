@@ -6,16 +6,10 @@
  */
 import { TextContent } from '../../Class/Content/ContentClass';
 import {
-  BuiltinConditionScriptItem,
-  BuiltinExecutionScriptItem,
-  BuiltinTextScriptItem,
-  ConditionScriptItem,
-  ExecutionScriptItem,
   HtmlItem,
   Item,
   OptionItem,
   ScriptItem,
-  TextScriptItem,
 } from '../../Class/Item/ItemClass';
 import {
   NewItem,
