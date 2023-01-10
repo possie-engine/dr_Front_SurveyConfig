@@ -468,6 +468,9 @@ class LoopContent extends BlockContent {
     options: OptionList;
     logics: Array<ConditionContent>;
     list: Array<Node>;
+    loopItemDisplay: {
+      [key: string]: { [key: string]: ConditionContent | boolean | null };
+    };
   };
   constructor(
     id: string,

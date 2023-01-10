@@ -52,6 +52,7 @@ class List extends Ele {
 class Questionnaire extends List {
   public editor: { comment: string; task: string };
   public list: Array<Node>;
+  public interviewList: Array<Node>;
   public meta: {
     lan: Array<string>;
     defaultLan: string;
@@ -68,7 +69,11 @@ class Questionnaire extends List {
       [key: string]: { name: string; data: OptionList };
     };
     pluginInfo: {
-      [key: string]: Array<{ version: string; previewKey: string | null }>;
+      [key: string]: Array<{
+        version: string;
+        previewKey: string | null;
+        type: string;
+      }>;
     };
   };
   public survey_name: string;
@@ -94,15 +99,21 @@ class Questionnaire extends List {
         [key: string]: { name: string; data: OptionList };
       };
       pluginInfo: {
-        [key: string]: Array<{ version: string; previewKey: string | null }>;
+        [key: string]: Array<{
+          version: string;
+          previewKey: string | null;
+          type: string;
+        }>;
       };
     },
     editor: { comment: string; task: string },
-    list: Array<Node>
+    list: Array<Node>,
+    interviewList: Array<Node>
   ) {
-    super(id, kind, meta, editor, list);
+    super(id, kind, meta, editor, list, interviewList);
     this.editor = editor;
     this.list = list;
+    this.interviewList = interviewList;
     this.meta = meta;
     this.survey_name = survey_name;
     this.survey_note = survey_note;
