@@ -91,6 +91,7 @@ class QuestionNode extends Node {
     appearance: {
       plugin: {
         [key: string]: {
+          version: string;
           name: string;
           settings: {
             type: 'map' | 'array' | 'boolean' | 'string' | 'number';
@@ -145,6 +146,7 @@ class QuestionNode extends Node {
         plugin: {
           [key: string]: {
             name: string;
+            version: string;
             settings: {
               type: 'map' | 'array' | 'boolean' | 'string' | 'number';
               description: string;
