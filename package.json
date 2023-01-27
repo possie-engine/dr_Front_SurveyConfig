@@ -1,6 +1,6 @@
 {
     "name": "@possie-engine/dr_front_surveyconfig",
-    "version": "0.3.22",
+    "version": "0.3.23",
     "description": "survey configuration",
     "main": "index.js",
     "scripts": {
