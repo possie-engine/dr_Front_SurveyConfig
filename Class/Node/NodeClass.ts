@@ -550,11 +550,57 @@ class QuotaNode extends MarkNode {
     this.structure = structure;
   }
 }
+
+/**
+ * Node second level class Display extend from Node
+ * @param {string} id the id of the node
+ * @param {'Display'} kind the node kind is type of 'MarkNode'
+ * @param {object | null} meta the meta data of the node
+ * @param {object} editor the editor of the node
+ * @param {object} structure the node structure data is an object
+ */
+class JumpNode extends Node {
+  public structure: {
+    code: string;
+    condition: {
+      true: ConditionContent | boolean | null;
+      false: ConditionContent | boolean | null;
+    };
+  };
+  constructor(
+    id: string,
+    kind: 'JumpNode' | string,
+    meta: {
+      node_label: string;
+    },
+    editor: { comment: string; instruction: HtmlItem; task: string },
+    structure: {
+      code: string;
+      go_to: {
+        node_id: string;
+      };
+      condition: {
+        true: ConditionContent | boolean | null;
+        false: ConditionContent | boolean | null;
+      };
+    }
+  ) {
+    super(id, kind, meta, editor, structure);
+    this.structure = structure;
+  }
+  public validateStructureContent() {
+    return null;
+  }
+  public validateStructureCondition() {
+    return null;
+  }
+}
 /* <------------------------------------ **** Node Third Level Class END **** ------------------------------------ */
 
 export {
   Node,
   QuestionNode,
+  JumpNode,
   BlockNode,
   ExecutionNode,
   MarkNode,
