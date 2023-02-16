@@ -61,6 +61,7 @@ type QuestionContentContentType = {
   };
 };
 type QuestionContentMetaType = {
+  dropDown: Array<{ active: boolean }>;
   randomized: Array<{
     active: boolean;
     type: 'auto' | 'script';
