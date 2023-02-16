@@ -84,9 +84,15 @@ class QuestionNode extends Node {
       [key: string]: ConditionContent | boolean | null;
     };
     tag: {
-      gov: Array<string> | null;
-      ind: Array<string> | null;
-      user: Array<string> | null;
+      gov: Array<{
+        org: { org_id: string; org_name: string; tags: Array<string> };
+      }> | null;
+      ind: Array<{
+        org: { org_id: string; org_name: string; tags: Array<string> };
+      }> | null;
+      user: Array<{
+        org: { org_id: string; org_name: string; tags: Array<string> };
+      }> | null;
     };
     appearance: {
       plugin: {
@@ -138,9 +144,15 @@ class QuestionNode extends Node {
         [key: string]: ConditionContent | boolean | null;
       };
       tag: {
-        gov: Array<string> | null;
-        ind: Array<string> | null;
-        user: Array<string> | null;
+        gov: Array<{
+          org: { org_id: string; org_name: string; tags: Array<string> };
+        }> | null;
+        ind: Array<{
+          org: { org_id: string; org_name: string; tags: Array<string> };
+        }> | null;
+        user: Array<{
+          org: { org_id: string; org_name: string; tags: Array<string> };
+        }> | null;
       };
       appearance: {
         plugin: {
